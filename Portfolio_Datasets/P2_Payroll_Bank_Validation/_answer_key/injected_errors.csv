@@ -1,0 +1,31 @@
+file,emp_id,error_type,description
+employee_master,E0228,missing_pan,PAN blank in master
+employee_master,E0085,missing_pan,PAN blank in master
+employee_master,E0026,missing_pan,PAN blank in master
+employee_master,E0023,missing_pan,PAN blank in master
+payroll_2025-09,E0141,invalid_ifsc,IFSC 'HDFC12345A7' fails format AAAA0XXXXXX
+payroll_2025-09,E0182,invalid_ifsc,IFSC 'UTIB06COU8' fails format AAAA0XXXXXX
+payroll_2025-09,E0217,invalid_ifsc,IFSC 'ICICOQ5FWXS' fails format AAAA0XXXXXX
+payroll_2025-09,E0091,invalid_ifsc,IFSC 'SBINOWBD5QU' fails format AAAA0XXXXXX
+payroll_2025-09,E0026,invalid_ifsc,IFSC 'HDFC12345A7' fails format AAAA0XXXXXX
+payroll_2025-09,E0015,duplicate_account,Same account as E0208
+payroll_2025-09,E0183,duplicate_account,Same account as E0214
+payroll_2025-09,E0154,duplicate_account,Same account as E0178
+payroll_2025-09,E0160,account_changed_vs_master,Account number differs from master; needs approval
+payroll_2025-09,E0095,account_changed_vs_master,Account number differs from master; needs approval
+payroll_2025-09,E0244,account_changed_vs_master,Account number differs from master; needs approval
+payroll_2025-09,E0124,account_changed_vs_master,Account number differs from master; needs approval
+payroll_2025-09,E0250,name_mismatch,Name differs from master (some are only reordered: fuzzy match should pass those)
+payroll_2025-09,E0151,name_mismatch,Name differs from master (some are only reordered: fuzzy match should pass those)
+payroll_2025-09,E0209,name_mismatch,Name differs from master (some are only reordered: fuzzy match should pass those)
+payroll_2025-09,E0013,name_mismatch,Name differs from master (some are only reordered: fuzzy match should pass those)
+payroll_2025-09,E0038,salary_jump,Gross pay up >50% vs August
+payroll_2025-09,E0049,salary_jump,Gross pay up >50% vs August
+payroll_2025-09,E0020,salary_jump,Gross pay up >50% vs August
+payroll_2025-09,E0164,salary_jump,Gross pay up >50% vs August
+payroll_2025-09,E0121,salary_jump,Gross pay up >50% vs August
+payroll_2025-09,E0221,net_pay_mismatch,net_pay != gross - deductions
+payroll_2025-09,E0037,net_pay_mismatch,net_pay != gross - deductions
+payroll_2025-09,E0251,employee_not_in_master,New joiner missing from employee master
+payroll_2025-09,E0252,employee_not_in_master,New joiner missing from employee master
+payroll_2025-09,E0253,employee_not_in_master,New joiner missing from employee master

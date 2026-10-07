@@ -1,0 +1,6 @@
+date,feed,issue,description
+2025-07-15,orders,duplicate_rows,25 duplicated order lines
+2025-08-10,orders,unknown_sku,10 lines with SKU9999 not in products.csv
+2025-08-20,orders,negative_quantity,6 lines with negative quantity (returns booked as orders)
+2025-09-01,orders,schema_change,New column customer_type appears from this date
+2025-09-18,orders,late_file,Orders file for 2025-09-18 is missing; its rows arrive inside the 2025-09-19 file

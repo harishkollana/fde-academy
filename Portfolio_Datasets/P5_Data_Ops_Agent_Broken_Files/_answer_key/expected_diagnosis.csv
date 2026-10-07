@@ -1,0 +1,41 @@
+file,problem_type,expected_action,note
+v01_renamed_columns.xlsx,renamed_column,auto_fix,account_code -> Account
+v02_renamed_columns.xlsx,renamed_column,auto_fix,posting_date -> Date
+v03_renamed_columns.xlsx,renamed_column,auto_fix,debit/credit -> Dr/Cr
+v04_renamed_columns.xlsx,renamed_column,auto_fix,entity_code -> Company
+v05_renamed_columns.xlsx,renamed_column,auto_fix,bu_code -> Business Unit
+v06_renamed_columns.xlsx,renamed_column,auto_fix,two renames
+v07_renamed_columns.xlsx,ambiguous_rename,escalate,debit renamed to Amount; credit still present - meaning unclear
+v08_missing_bu_column.xlsx,missing_column,escalate,bu_code column missing; cannot be inferred
+v09_missing_description.xlsx,missing_optional_column,auto_fix,description missing; fill blank and warn
+v10_missing_credit.xlsx,missing_column,escalate,credit column missing; journals cannot balance
+v11_columns_reordered.xlsx,column_order_changed,auto_fix,"same columns, reversed order"
+v12_extra_column.xlsx,extra_column,auto_fix,unexpected extra column; ignore and warn
+v13_uppercase_headers.xlsx,header_case_changed,auto_fix,headers in UPPERCASE
+v14_header_spaces.xlsx,header_whitespace,auto_fix,spaces around headers
+v15_title_rows_above_header.xlsx,extra_header_rows,auto_fix,3 rows of titles before the header row
+v16_merged_title_cells.xlsx,merged_cells,auto_fix,merged title cells above header
+v17_sheet_renamed.xlsx,sheet_renamed,auto_fix,sheet named 'Sheet1' instead of 'GL'
+v18_data_on_second_sheet.xlsx,data_on_other_sheet,auto_fix,first sheet is a notes sheet; data on 'Ledger May'
+v19_split_by_entity_sheets.xlsx,split_across_sheets,auto_fix,one sheet per entity; combine all
+v20_date_ddmmyyyy.xlsx,date_format_changed,auto_fix,dates as DD/MM/YYYY
+v21_date_dd_mon_yy.xlsx,date_format_changed,auto_fix,dates as 15-May-25
+v22_date_excel_serial.xlsx,date_as_serial_number,auto_fix,dates stored as Excel serial numbers
+v23_date_mmddyyyy_ambiguous.xlsx,ambiguous_date_format,escalate,MM/DD/YYYY - ambiguous for days <= 12; confirm with sender
+v24_currency_symbols.xlsx,currency_codes_changed,auto_fix,Rs/£/$ instead of ISO codes
+v25_unexpected_currency.xlsx,unexpected_currency,escalate,"UK01 lines in EUR - no rate, wrong entity currency"
+v26_amounts_as_text.xlsx,amounts_as_text,auto_fix,amounts as text with thousand separators
+v27_amounts_with_symbols.xlsx,amounts_with_symbols,auto_fix,debit has ₹ symbols and '-' for zero
+v28_amounts_in_thousands.xlsx,unit_changed,escalate,amounts appear 1000x smaller - possibly in thousands; confirm
+v29_account_as_number.xlsx,datatype_changed,auto_fix,account codes as numbers; cast to text
+v30_account_with_name.xlsx,value_format_changed,auto_fix,account like '4100 - 4100'; extract code
+v31_blank_rows.xlsx,blank_rows,auto_fix,5 blank rows in the middle
+v32_total_row_at_end.xlsx,total_row_included,auto_fix,a TOTAL row at the bottom; drop it
+v33_duplicated_rows.xlsx,duplicate_rows,auto_fix,first 40 rows repeated; dedupe and report
+v34_truncated_file.xlsx,truncated_file,escalate,only a third of the expected rows; likely incomplete export
+v35_empty_file.xlsx,empty_file,escalate,"headers only, no data"
+v36_entity_code_variant.xlsx,master_value_variant,auto_fix,IN-01 instead of IN01 on 30 rows
+v37_new_account_code.xlsx,unknown_master_value,escalate,account 4150 not in COA - new account or mistake?
+v38_csv_instead_of_xlsx.csv,file_type_changed,auto_fix,CSV instead of Excel
+v39_semicolon_csv.csv,delimiter_changed,auto_fix,"semicolon delimiter, comma decimals"
+v40_latin1_encoding.csv,encoding_changed,auto_fix,latin-1 encoded CSV

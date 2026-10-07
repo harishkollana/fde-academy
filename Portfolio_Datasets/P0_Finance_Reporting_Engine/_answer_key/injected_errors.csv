@@ -1,0 +1,30 @@
+file_month,journal_id,error_type,description
+2025-06,JV202506-00488,unknown_account,Account 9999 not in chart of accounts
+2025-06,JV202506-00416,unknown_account,Account 9999 not in chart of accounts
+2025-06,JV202506-00472,unknown_account,Account 9999 not in chart of accounts
+2025-07,JV202507-00716,unbalanced_journal,"One line inflated by 10%, debits != credits"
+2025-07,JV202507-00740,unbalanced_journal,"One line inflated by 10%, debits != credits"
+2025-08,JV202508-00870,duplicate_line,Exact duplicate line appended at end of file
+2025-08,JV202508-00998,duplicate_line,Exact duplicate line appended at end of file
+2025-08,JV202508-00959,duplicate_line,Exact duplicate line appended at end of file
+2025-08,JV202508-00997,duplicate_line,Exact duplicate line appended at end of file
+2025-08,JV202508-00940,duplicate_line,Exact duplicate line appended at end of file
+2025-08,JV202508-00916,duplicate_line,Exact duplicate line appended at end of file
+2025-09,JV202509-01136,unknown_bu,BU-XXX not in business unit master
+2025-09,JV202509-01022,unknown_bu,BU-XXX not in business unit master
+2025-09,JV202509-01070,unknown_bu,BU-XXX not in business unit master
+2025-09,JV202509-01126,unknown_bu,BU-XXX not in business unit master
+2025-10,JV202510-01258,wrong_date_format,Date written as DD/MM/YYYY instead of YYYY-MM-DD
+2025-10,JV202510-01337,wrong_date_format,Date written as DD/MM/YYYY instead of YYYY-MM-DD
+2025-10,JV202510-01306,wrong_date_format,Date written as DD/MM/YYYY instead of YYYY-MM-DD
+2025-10,JV202510-01345,wrong_date_format,Date written as DD/MM/YYYY instead of YYYY-MM-DD
+2025-10,JV202510-01386,wrong_date_format,Date written as DD/MM/YYYY instead of YYYY-MM-DD
+2025-11,(all UK01 lines),missing_fx_rate,GBP rate for 2025-11 missing in fx_rates file
+2025-12,JV202512-01634,date_outside_period,Posting date belongs to the previous month
+2025-12,JV202512-01643,date_outside_period,Posting date belongs to the previous month
+2025-12,JV202512-01623,date_outside_period,Posting date belongs to the previous month
+2026-01,JV202601-01940,missing_account,Account code blank
+2026-01,JV202601-02007,missing_account,Account code blank
+2026-01,JV202601-01985,missing_account,Account code blank
+2026-02,JV202602-02140,negative_amount,Negative debit/credit value
+2026-02,JV202602-02014,negative_amount,Negative debit/credit value

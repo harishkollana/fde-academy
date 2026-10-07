@@ -1,0 +1,53 @@
+sku,product_name,category,brand,uom,launch_date
+SKU0001,Cold Coffee (M),Beverages,Everfresh,EA,2023-11-25
+SKU0002,Cold Coffee (L),Beverages,Kaveri,EA,2024-01-01
+SKU0003,Cold Coffee (S),Beverages,Lotus,EA,2023-12-01
+SKU0004,Green Tea (S),Beverages,Nimbus,EA,2023-02-15
+SKU0005,Green Tea (L),Beverages,Kaveri,EA,2022-06-02
+SKU0006,Green Tea (M),Beverages,Kaveri,EA,2023-03-17
+SKU0007,Mango Drink (S),Beverages,Everfresh,EA,2024-04-09
+SKU0008,Mango Drink (L),Beverages,Nimbus,EA,2024-07-23
+SKU0009,Mango Drink (M),Beverages,Kaveri,EA,2024-12-17
+SKU0010,Sparkling Water (L),Beverages,Nimbus,EA,2024-06-17
+SKU0011,Sparkling Water (M),Beverages,Kaveri,EA,2025-04-21
+SKU0012,Sparkling Water (S),Beverages,Sunrise,EA,2024-01-19
+SKU0013,Energy Drink (M),Beverages,Kaveri,EA,2023-03-15
+SKU0014,Masala Chips (L),Snacks,Kaveri,EA,2023-12-22
+SKU0015,Masala Chips (M),Snacks,Sunrise,EA,2022-09-23
+SKU0016,Salted Peanuts (M),Snacks,Lotus,EA,2024-03-29
+SKU0017,Salted Peanuts (S),Snacks,Sunrise,EA,2022-10-07
+SKU0018,Choco Cookies (M),Snacks,Kaveri,EA,2022-05-15
+SKU0019,Choco Cookies (L),Snacks,Nimbus,EA,2024-11-19
+SKU0020,Multigrain Crackers (M),Snacks,Kaveri,EA,2023-04-03
+SKU0021,Multigrain Crackers (S),Snacks,Lotus,EA,2024-08-08
+SKU0022,Roasted Makhana (L),Snacks,Nimbus,EA,2023-12-17
+SKU0023,Herbal Shampoo (L),Personal Care,Nimbus,EA,2024-10-02
+SKU0024,Herbal Shampoo (S),Personal Care,Kaveri,EA,2024-11-19
+SKU0025,Neem Soap (S),Personal Care,Lotus,EA,2025-04-29
+SKU0026,Neem Soap (L),Personal Care,Nimbus,EA,2024-10-16
+SKU0027,Neem Soap (M),Personal Care,Lotus,EA,2024-02-04
+SKU0028,Aloe Face Wash (M),Personal Care,Kaveri,EA,2024-03-11
+SKU0029,Aloe Face Wash (S),Personal Care,Sunrise,EA,2022-02-02
+SKU0030,Mint Toothpaste (S),Personal Care,Nimbus,EA,2025-03-03
+SKU0031,Mint Toothpaste (L),Personal Care,Nimbus,EA,2024-10-30
+SKU0032,Body Lotion (S),Personal Care,Nimbus,EA,2022-11-30
+SKU0033,Body Lotion (M),Personal Care,Sunrise,EA,2022-08-13
+SKU0034,Body Lotion (L),Personal Care,Nimbus,EA,2024-05-25
+SKU0035,Dish Liquid (L),Home Care,Kaveri,EA,2023-01-20
+SKU0036,Dish Liquid (S),Home Care,Kaveri,EA,2023-02-28
+SKU0037,Dish Liquid (M),Home Care,Kaveri,EA,2022-01-08
+SKU0038,Floor Cleaner (M),Home Care,Kaveri,EA,2024-12-19
+SKU0039,Detergent Powder (M),Home Care,Lotus,EA,2023-12-07
+SKU0040,Detergent Powder (L),Home Care,Kaveri,EA,2023-05-15
+SKU0041,Detergent Powder (S),Home Care,Kaveri,EA,2022-06-26
+SKU0042,Glass Cleaner (S),Home Care,Sunrise,EA,2024-02-28
+SKU0043,Air Freshener (L),Home Care,Sunrise,EA,2022-02-08
+SKU0044,Air Freshener (M),Home Care,Everfresh,EA,2024-07-18
+SKU0045,Air Freshener (S),Home Care,Sunrise,EA,2022-09-26
+SKU0046,Basmati Rice 5kg (S),Staples,Kaveri,EA,2023-06-08
+SKU0047,Basmati Rice 5kg (L),Staples,Lotus,EA,2023-03-01
+SKU0048,Basmati Rice 5kg (M),Staples,Kaveri,EA,2023-04-07
+SKU0049,Toor Dal 1kg (M),Staples,Nimbus,EA,2024-06-18
+SKU0050,Sunflower Oil 1L (S),Staples,Lotus,EA,2024-08-25
+SKU0051,Atta 10kg (L),Staples,Sunrise,EA,2023-12-09
+SKU0052,Sugar 1kg (L),Staples,Everfresh,EA,2022-04-16

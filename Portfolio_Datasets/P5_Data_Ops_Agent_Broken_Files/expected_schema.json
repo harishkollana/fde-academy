@@ -1,0 +1,20 @@
+{
+  "sheet_name": "GL",
+  "columns": {
+    "journal_id": "str",
+    "posting_date": "str",
+    "entity_code": "str",
+    "bu_code": "str",
+    "account_code": "str",
+    "description": "str",
+    "currency": "str",
+    "debit": "float64",
+    "credit": "float64"
+  },
+  "date_format": "YYYY-MM-DD",
+  "currencies": [
+    "INR",
+    "GBP",
+    "USD"
+  ]
+}

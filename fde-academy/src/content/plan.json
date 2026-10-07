@@ -1,0 +1,2666 @@
+{
+ "foundations": [
+  {
+   "module": "The big picture",
+   "lessons": [
+    {
+     "id": "foundations-data-product",
+     "title": "What an end-to-end data product is",
+     "covers": "sources → ingest → store → transform → serve → monitor; the people (analyst, analytics engineer, data engineer, FDE); the Kollana Tech running example"
+    },
+    {
+     "id": "foundations-oltp-olap-batch-stream",
+     "title": "OLTP vs OLAP, batch vs streaming",
+     "covers": "latency vs throughput, micro-batch, ETL vs ELT, where each lives"
+    },
+    {
+     "id": "foundations-architecture-patterns",
+     "title": "Warehouse, lake, lakehouse, medallion, mesh",
+     "covers": "monolith vs services, build vs buy, reference architectures on OSS and on Azure"
+    },
+    {
+     "id": "foundations-governance-quality-lineage",
+     "title": "Quality, contracts, lineage and ownership",
+     "covers": "quality dimensions, data contracts, SLAs, lineage, catalog, PII, India's DPDP Act at concept level (\"check the current rules\")"
+    }
+   ]
+  },
+  {
+   "module": "How computers talk to each other",
+   "lessons": [
+    {
+     "id": "foundations-ip-ports-nat",
+     "title": "IP addresses, subnets, ports, NAT",
+     "covers": "IPv4/IPv6, private ranges, CIDR maths, sockets, why your laptop can't be reached from outside"
+    },
+    {
+     "id": "foundations-dns",
+     "title": "DNS",
+     "covers": "records (A, CNAME, MX, TXT), the resolution chain, TTL, private DNS, `nslookup` lab, \"it's always DNS\" outages"
+    },
+    {
+     "id": "foundations-http-in-depth",
+     "title": "HTTP in depth",
+     "covers": "methods, status codes, headers, cookies, caching headers, HTTP/1.1 vs 2 vs 3, `curl` and PowerShell lab"
+    },
+    {
+     "id": "foundations-tls-certificates",
+     "title": "TLS and certificates",
+     "covers": "handshake, certificate chain, CAs, SNI, mutual TLS, expired-certificate incidents, `openssl` lab"
+    },
+    {
+     "id": "foundations-proxies-load-balancing",
+     "title": "Proxies, gateways and load balancing",
+     "covers": "forward vs reverse proxy, API gateway, L4 vs L7, round robin / least connections / hashing, health checks, sticky sessions, blue-green and canary, CDN; LoadBalancer simulator"
+    },
+    {
+     "id": "foundations-network-security",
+     "title": "Network security",
+     "covers": "firewalls and security groups, VPN, private endpoints, bastion, DMZ, zero trust, least-privilege networks"
+    }
+   ]
+  },
+  {
+   "module": "Identity and access: how auth really works",
+   "lessons": [
+    {
+     "id": "foundations-authentication",
+     "title": "Authentication",
+     "covers": "passwords, hashing (bcrypt/argon2), salts, MFA, sessions vs tokens, API keys, basic auth, why never to roll your own"
+    },
+    {
+     "id": "foundations-oauth2-oidc",
+     "title": "OAuth 2.0 and OpenID Connect",
+     "covers": "roles, authorization code + PKCE, client credentials, device code, scopes, ID vs access vs refresh tokens; OAuthFlow simulator"
+    },
+    {
+     "id": "foundations-jwt-sso-saml",
+     "title": "JWT, SSO and SAML",
+     "covers": "token anatomy, validating signature/`exp`/`aud`/`iss`, JWKS, single sign-on, SAML vs OIDC, federation; JwtDecoder"
+    },
+    {
+     "id": "foundations-authorization-secrets",
+     "title": "Authorization, secrets and encryption",
+     "covers": "RBAC/ABAC/ACL, least privilege, service accounts, secrets management, encryption at rest and in transit, key management, audit logs"
+    }
+   ]
+  },
+  {
+   "module": "Reliability and scale",
+   "lessons": [
+    {
+     "id": "foundations-acid-cap",
+     "title": "ACID, CAP and consistency",
+     "covers": "transactions, isolation in one page, CAP/PACELC, strong vs eventual consistency"
+    },
+    {
+     "id": "foundations-idempotency-retries-queues",
+     "title": "Idempotency, retries and queues",
+     "covers": "idempotency keys, retry with backoff and jitter, queues vs pub/sub, delivery guarantees (at-least-once, \"exactly-once\"), dead-letter queues; RetryBackoff simulator"
+    },
+    {
+     "id": "foundations-caching-scaling",
+     "title": "Caching, rate limiting and scaling",
+     "covers": "cache layers and invalidation, token bucket, vertical vs horizontal scaling, replication, sharding"
+    },
+    {
+     "id": "foundations-observability-slo",
+     "title": "Observability and SLOs",
+     "covers": "logs, metrics, traces, SLI/SLO/SLA, alerting, incidents and post-mortems, cost awareness (FinOps)"
+    }
+   ]
+  },
+  {
+   "module": "Where data lives",
+   "lessons": [
+    {
+     "id": "foundations-file-formats",
+     "title": "File formats",
+     "covers": "CSV, JSON, Excel, XML, Parquet, Avro, ORC; row vs columnar; compression; schema evolution; partitioned folder layouts"
+    },
+    {
+     "id": "foundations-database-landscape",
+     "title": "The database landscape",
+     "covers": "relational, document, key-value, columnar, graph, time-series, vector; object storage (S3/Blob/ADLS); choosing the right store"
+    }
+   ]
+  },
+  {
+   "module": "Your machine and your first design",
+   "lessons": [
+    {
+     "id": "foundations-windows-dev-setup",
+     "title": "Windows dev setup",
+     "covers": "PowerShell, paths and environment variables, WSL2 + Ubuntu, VS Code, winget, the Linux commands you need (grep, pipes, chmod, ps)"
+    },
+    {
+     "id": "foundations-design-doc",
+     "title": "Lab: design doc for the Finance Reporting Engine",
+     "covers": "architecture sketch, data flow, network and auth choices, failure modes, cost; this doc is reused in Project A"
+    }
+   ]
+  }
+ ],
+ "sql": [
+  {
+   "module": "SQL foundations",
+   "lessons": [
+    {
+     "id": "sql-setup",
+     "title": "Install PostgreSQL and DBeaver; the practice data",
+     "covers": "install, create DB, load the Kollana Tech data, tour of tables, rows, columns, keys"
+    },
+    {
+     "id": "sql-select",
+     "title": "SELECT, WHERE, ORDER BY, LIMIT",
+     "covers": "first questions, DISTINCT, aliases, logical order of execution"
+    },
+    {
+     "id": "sql-operators",
+     "title": "Operators",
+     "covers": "IN, BETWEEN, LIKE, ILIKE, comparison and logical operators, AND/OR precedence"
+    },
+    {
+     "id": "sql-nulls",
+     "title": "NULLs",
+     "covers": "IS NULL, COALESCE, NULLIF, three-valued logic, NULLs in aggregates, `COUNT(*)` vs `COUNT(col)`"
+    },
+    {
+     "id": "sql-case-cast",
+     "title": "CASE, CAST and numbers",
+     "covers": "simple and searched CASE, `CAST` and `::`, ROUND, numeric precision, integer division"
+    }
+   ]
+  },
+  {
+   "module": "Summarising data",
+   "lessons": [
+    {
+     "id": "sql-aggregates",
+     "title": "Aggregates and GROUP BY",
+     "covers": "COUNT/SUM/AVG/MIN/MAX, COUNT DISTINCT, multiple group columns, HAVING vs WHERE, unbalanced journals"
+    },
+    {
+     "id": "sql-conditional-agg",
+     "title": "Conditional aggregation",
+     "covers": "`SUM(CASE WHEN …)`, FILTER, months-as-columns pivot"
+    },
+    {
+     "id": "sql-rollup",
+     "title": "Subtotals",
+     "covers": "GROUPING SETS, ROLLUP, CUBE, `GROUPING()`"
+    }
+   ]
+  },
+  {
+   "module": "Joining tables",
+   "lessons": [
+    {
+     "id": "sql-joins",
+     "title": "Joins",
+     "covers": "INNER, LEFT, RIGHT, FULL; ON vs WHERE; JoinVisualizer"
+    },
+    {
+     "id": "sql-joins-advanced",
+     "title": "Join patterns and traps",
+     "covers": "self join (employee–manager, account–parent), CROSS JOIN scaffolding, anti-join, semi-join, fan-out, NULL keys, many-to-many"
+    }
+   ]
+  },
+  {
+   "module": "Subqueries and CTEs",
+   "lessons": [
+    {
+     "id": "sql-subqueries",
+     "title": "Subqueries",
+     "covers": "scalar, IN, correlated, EXISTS"
+    },
+    {
+     "id": "sql-ctes",
+     "title": "CTEs",
+     "covers": "chained CTEs, recursive CTE for the account hierarchy and date series, CTE materialisation"
+    }
+   ]
+  },
+  {
+   "module": "Window functions",
+   "lessons": [
+    {
+     "id": "sql-window-ranking",
+     "title": "Window functions I",
+     "covers": "ROW_NUMBER, RANK, DENSE_RANK, top N per group, dedup"
+    },
+    {
+     "id": "sql-window-analytics",
+     "title": "Window functions II",
+     "covers": "LAG/LEAD month-on-month, running totals and YTD by fiscal year, moving averages, frames (ROWS vs RANGE), FIRST/LAST_VALUE, NTILE, percent of total; WindowViz"
+    }
+   ]
+  },
+  {
+   "module": "Dates, text and JSON",
+   "lessons": [
+    {
+     "id": "sql-dates",
+     "title": "Dates and time",
+     "covers": "DATE_TRUNC, EXTRACT, intervals, AGE, time zones, fiscal year April–March, `generate_series` calendar"
+    },
+    {
+     "id": "sql-strings-regex",
+     "title": "Strings and regex",
+     "covers": "TRIM…SPLIT_PART, CONCAT, REPLACE, REGEXP_REPLACE, `~`, validate GSTIN/IFSC/PAN; RegexTester"
+    },
+    {
+     "id": "sql-json-arrays",
+     "title": "JSON, JSONB and arrays",
+     "covers": "`->`, `->>`, `jsonb_each`, `jsonb_array_elements`, GIN-indexable queries, arrays and `unnest`, when not to use JSON"
+    }
+   ]
+  },
+  {
+   "module": "Sets and reconciliation",
+   "lessons": [
+    {
+     "id": "sql-set-ops",
+     "title": "Set operations",
+     "covers": "UNION vs UNION ALL, INTERSECT, EXCEPT"
+    },
+    {
+     "id": "sql-reconciliation",
+     "title": "Reconciliation queries",
+     "covers": "totals, EXCEPT, mismatches with tolerance, full GST reconciliation; FuzzyMatch"
+    }
+   ]
+  },
+  {
+   "module": "Changing data safely",
+   "lessons": [
+    {
+     "id": "sql-dml",
+     "title": "INSERT, UPDATE, DELETE",
+     "covers": "INSERT…SELECT, UPDATE…FROM, DELETE USING, RETURNING"
+    },
+    {
+     "id": "sql-upsert-merge",
+     "title": "Upsert and MERGE",
+     "covers": "`ON CONFLICT DO UPDATE`, MERGE, idempotent loads"
+    },
+    {
+     "id": "sql-transactions-isolation",
+     "title": "Transactions and isolation",
+     "covers": "BEGIN/COMMIT/ROLLBACK, savepoints, isolation levels, dirty/non-repeatable/phantom reads, MVCC in plain words; IsolationLevels simulator"
+    },
+    {
+     "id": "sql-locks-deadlocks",
+     "title": "Locks and deadlocks",
+     "covers": "row locks, `FOR UPDATE`, `SKIP LOCKED` job queues, advisory locks, deadlocks and how to avoid them"
+    }
+   ]
+  },
+  {
+   "module": "Designing databases",
+   "lessons": [
+    {
+     "id": "sql-ddl",
+     "title": "CREATE TABLE and constraints",
+     "covers": "data types, PK/FK/UNIQUE/CHECK/NOT NULL, DEFAULT, identity, audit columns, ALTER, views, materialized views"
+    },
+    {
+     "id": "sql-modelling",
+     "title": "Normalisation and keys",
+     "covers": "1NF–3NF, surrogate vs natural keys, star-schema basics, SCD basics (runnable)"
+    }
+   ]
+  },
+  {
+   "module": "Programmability, security and operations",
+   "lessons": [
+    {
+     "id": "sql-functions-procedures",
+     "title": "Functions, procedures and triggers",
+     "covers": "SQL and PL/pgSQL functions, procedures, DO blocks, audit triggers, when logic belongs in the database"
+    },
+    {
+     "id": "sql-roles-security",
+     "title": "Roles, privileges and row-level security",
+     "covers": "roles, GRANT/REVOKE, schemas, RLS, SQL injection and prepared statements"
+    },
+    {
+     "id": "sql-ops-backup",
+     "title": "Operating PostgreSQL",
+     "covers": "`pg_dump`/`pg_restore`, `COPY`/`\\copy`, extensions, config, `pg_stat_*`, connection pooling concept"
+    }
+   ]
+  },
+  {
+   "module": "Performance",
+   "lessons": [
+    {
+     "id": "sql-performance",
+     "title": "Indexes and EXPLAIN",
+     "covers": "B-tree, composite, unused index, EXPLAIN/ANALYZE basics, sargable filters, SELECT *"
+    },
+    {
+     "id": "sql-indexes-deep",
+     "title": "Indexes in depth",
+     "covers": "B-tree vs hash vs GIN vs GiST vs BRIN, partial, covering (INCLUDE), expression indexes, index bloat, when an index hurts"
+    },
+    {
+     "id": "sql-explain-deep",
+     "title": "Reading query plans",
+     "covers": "scan and join nodes, nested loop vs hash vs merge join, cost model, statistics and ANALYZE, bad row estimates; ExplainViz"
+    },
+    {
+     "id": "sql-partitioning-maintenance",
+     "title": "Partitioning and maintenance",
+     "covers": "declarative partitioning, pruning, VACUUM/autovacuum, bloat, table statistics"
+    }
+   ]
+  },
+  {
+   "module": "Data-engineering SQL patterns",
+   "lessons": [
+    {
+     "id": "sql-incremental-loads",
+     "title": "Incremental loads",
+     "covers": "watermarks, change detection, idempotent re-runs, late-arriving data, soft deletes"
+    },
+    {
+     "id": "sql-scd2",
+     "title": "SCD Type 2 in SQL",
+     "covers": "effective dating, MERGE-based SCD2, point-in-time queries; ScdViz"
+    },
+    {
+     "id": "sql-advanced-patterns",
+     "title": "Interview patterns",
+     "covers": "gaps and islands, sessionisation, cohorts and retention, funnels, top-N per group, pivot and unpivot, running streaks"
+    },
+    {
+     "id": "sql-data-quality",
+     "title": "Data quality in SQL",
+     "covers": "duplicates, null rates, orphans, ranges and outliers, layer reconciliation"
+    }
+   ]
+  },
+  {
+   "module": "Dialects and interviews",
+   "lessons": [
+    {
+     "id": "sql-dialects",
+     "title": "SQL across engines",
+     "covers": "PostgreSQL vs SQL Server (T-SQL) vs MySQL vs Snowflake vs BigQuery: syntax and behaviour differences cheat sheet"
+    },
+    {
+     "id": "sql-interview-method",
+     "title": "SQL interview method",
+     "covers": "approach, explain out loud, a practice routine that suits you, 3 timed challenges"
+    }
+   ]
+  }
+ ],
+ "python": [
+  {
+   "module": "Python core",
+   "lessons": [
+    {
+     "id": "python-setup-types",
+     "title": "Setup, types, f-strings",
+     "covers": "install, VS Code, how Python runs, int/float/str/bool/None, f-strings"
+    },
+    {
+     "id": "python-collections",
+     "title": "Lists, tuples, dicts, sets",
+     "covers": "when to use which, copying, mutability"
+    },
+    {
+     "id": "python-comprehensions-flow",
+     "title": "Comprehensions and control flow",
+     "covers": "list/dict/set comprehensions, nested, enumerate, zip, unpacking, match"
+    },
+    {
+     "id": "python-functions",
+     "title": "Functions",
+     "covers": "positional/keyword args, defaults and the mutable-default trap, `*args/**kwargs`, closures, lambda, sorted with key, map, filter"
+    },
+    {
+     "id": "python-modules",
+     "title": "Modules and packages",
+     "covers": "imports, packages, `__name__ == \"__main__\"`, import paths"
+    }
+   ]
+  },
+  {
+   "module": "Idioms every engineer uses",
+   "lessons": [
+    {
+     "id": "python-iterators-generators",
+     "title": "Iterators and generators",
+     "covers": "lazy streams, `yield`, itertools, processing a file bigger than memory"
+    },
+    {
+     "id": "python-decorators-context-managers",
+     "title": "Decorators and context managers",
+     "covers": "writing `@retry`, `with` blocks, `contextlib`"
+    },
+    {
+     "id": "python-oop-dataclasses",
+     "title": "Classes and dataclasses",
+     "covers": "`__init__`, methods, dunder methods, dataclasses, composition vs inheritance, `@property`, protocols, reading class-based repos"
+    },
+    {
+     "id": "python-typing-pydantic",
+     "title": "Type hints and Pydantic",
+     "covers": "`list[str]`, Optional/Union/Literal, TypedDict, Protocol, Pydantic v2 models, constraints, custom validators"
+    },
+    {
+     "id": "python-errors",
+     "title": "Errors and exceptions",
+     "covers": "try/except/else/finally, raising, custom exceptions, retryable vs non-retryable, retry with backoff"
+    }
+   ]
+  },
+  {
+   "module": "Files, text and time",
+   "lessons": [
+    {
+     "id": "python-files",
+     "title": "Files and folders",
+     "covers": "pathlib, glob, `open`, csv and json modules, many files in a folder, shutil, zipfile"
+    },
+    {
+     "id": "python-text-time-money",
+     "title": "Text, dates and money",
+     "covers": "`re`, `datetime`/`zoneinfo`/`dateutil`, `decimal` for money (never float), hashlib, uuid, Indian number formats"
+    }
+   ]
+  },
+  {
+   "module": "Concurrency and performance",
+   "lessons": [
+    {
+     "id": "python-concurrency",
+     "title": "Threads, processes and the GIL",
+     "covers": "threading, multiprocessing, `concurrent.futures`, I/O-bound vs CPU-bound"
+    },
+    {
+     "id": "python-asyncio",
+     "title": "asyncio",
+     "covers": "async/await, event loop, gathering API calls, when async helps"
+    },
+    {
+     "id": "python-performance",
+     "title": "Profiling and performance",
+     "covers": "cProfile, timeit, memory, Big-O in practice, generators vs lists"
+    }
+   ]
+  },
+  {
+   "module": "Engineering practice",
+   "lessons": [
+    {
+     "id": "python-logging-config",
+     "title": "Logging and configuration",
+     "covers": "logging levels/handlers, one logger per module, env vars, `.env`, YAML/TOML"
+    },
+    {
+     "id": "python-testing-pytest",
+     "title": "Testing with pytest",
+     "covers": "fixtures, parametrize, mocking, tmp_path, coverage, testing transforms"
+    },
+    {
+     "id": "python-quality-debugging",
+     "title": "Code quality and debugging",
+     "covers": "Ruff, mypy basics, pre-commit, VS Code debugger and breakpoints"
+    },
+    {
+     "id": "python-environments-packaging",
+     "title": "Environments and packaging",
+     "covers": "venv, pip, `uv`, requirements vs `pyproject.toml`, project layout, wheels, PyInstaller"
+    },
+    {
+     "id": "python-cli",
+     "title": "Command-line tools",
+     "covers": "argparse, Typer, exit codes, `python run.py --month 2026-09`"
+    }
+   ]
+  },
+  {
+   "module": "Python for data work",
+   "lessons": [
+    {
+     "id": "python-databases",
+     "title": "Databases from Python",
+     "covers": "psycopg, SQLAlchemy Core/ORM, sessions and transactions, parameterised queries, pooling, bulk loads with COPY"
+    },
+    {
+     "id": "python-http-apis",
+     "title": "Calling APIs",
+     "covers": "requests/httpx, headers, auth, pagination, timeouts, retries with backoff, 4xx vs 5xx"
+    },
+    {
+     "id": "python-scheduling",
+     "title": "Scheduling",
+     "covers": "Windows Task Scheduler, cron, APScheduler, why you will outgrow it"
+    },
+    {
+     "id": "python-security-secrets",
+     "title": "Security basics in code",
+     "covers": "secrets handling, input validation, hashing, SQL injection, SSRF, dependency risks"
+    }
+   ]
+  },
+  {
+   "module": "Interview",
+   "lessons": [
+    {
+     "id": "python-algorithms-de",
+     "title": "Interview toolkit",
+     "covers": "hash maps, sorting, two pointers, parsing CSV and logs, complexity"
+    },
+    {
+     "id": "python-interview-method",
+     "title": "Python interview method",
+     "covers": "approach, solving aloud, a practice routine that suits you, 4 timed challenges"
+    }
+   ]
+  }
+ ],
+ "pandas": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "pandas-basics",
+     "title": "DataFrames",
+     "covers": "Series/DataFrame, read_csv/read_excel, dtypes, loc/iloc/boolean masks/query"
+    },
+    {
+     "id": "pandas-groupby-window",
+     "title": "GroupBy and window logic",
+     "covers": "named aggregation, transform, rolling/expanding/shift"
+    },
+    {
+     "id": "pandas-combine",
+     "title": "Combining data",
+     "covers": "merge (`validate=`), concat, join, pivot_table, melt"
+    },
+    {
+     "id": "pandas-dates-text",
+     "title": "Dates and text",
+     "covers": "to_datetime, `.dt`, resample, periods, `.str`"
+    },
+    {
+     "id": "pandas-cleaning",
+     "title": "Cleaning",
+     "covers": "missing data, duplicates, dtypes, outliers, categoricals"
+    },
+    {
+     "id": "pandas-performance",
+     "title": "Speed and memory",
+     "covers": "vectorisation vs apply, dtypes, chunks, categorical, Arrow-backed dtypes"
+    },
+    {
+     "id": "pandas-parquet-arrow",
+     "title": "Parquet and Arrow",
+     "covers": "read/write Parquet, partitioned datasets, compression, schema"
+    },
+    {
+     "id": "pandas-excel-openpyxl",
+     "title": "Excel in and out",
+     "covers": "messy sheets, header rows, writing MIS packs with openpyxl (formats, widths, formulas, charts, multiple sheets)"
+    },
+    {
+     "id": "pandas-validation-testing",
+     "title": "Validating DataFrames",
+     "covers": "checks, schema validation, testing pandas transforms"
+    },
+    {
+     "id": "pandas-reconciliation-lab",
+     "title": "Lab: reconciliation in pandas",
+     "covers": "exact + tolerance + fuzzy matching on GST data"
+    }
+   ]
+  }
+ ],
+ "git": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "git-mental-model",
+     "title": "How Git thinks",
+     "covers": "commits as snapshots, the DAG, working tree/index/repo, HEAD; GitGraph"
+    },
+    {
+     "id": "git-daily-workflow",
+     "title": "Everyday workflow",
+     "covers": "init, add, commit, status, diff, log, `.gitignore`"
+    },
+    {
+     "id": "git-branching-merging",
+     "title": "Branches and merges",
+     "covers": "branch, switch, merge, fast-forward vs merge commit, conflicts, rebase basics"
+    },
+    {
+     "id": "git-remotes-github",
+     "title": "Remotes and GitHub",
+     "covers": "clone, fetch, pull, push, SSH keys / credential manager, GitHub UI"
+    },
+    {
+     "id": "git-pull-requests",
+     "title": "Pull requests and review",
+     "covers": "PR flow, forks, reviewing, templates, protected branches"
+    },
+    {
+     "id": "git-undo-recovery",
+     "title": "Undoing things",
+     "covers": "restore, reset (soft/mixed/hard), revert, amend, stash, reflog rescue"
+    },
+    {
+     "id": "git-team-workflows",
+     "title": "Team workflows",
+     "covers": "trunk-based vs gitflow, conventional commits, tags, releases, semantic versioning"
+    },
+    {
+     "id": "git-security-hygiene",
+     "title": "Keeping secrets out",
+     "covers": "leaked-secret recovery, `.env`, pre-commit hooks, signed commits"
+    },
+    {
+     "id": "git-interview-lab",
+     "title": "Lab: a clean repo history for Project A",
+     "covers": "meaningful commits, PR, README"
+    }
+   ]
+  }
+ ],
+ "modelling": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "modelling-oltp-vs-dw",
+     "title": "OLTP schema vs warehouse schema",
+     "covers": "why reporting models differ, normalised vs denormalised"
+    },
+    {
+     "id": "modelling-dimensional-basics",
+     "title": "Dimensional modelling (Kimball)",
+     "covers": "facts, dimensions, grain, star vs snowflake, the bus matrix"
+    },
+    {
+     "id": "modelling-dimensions",
+     "title": "Designing dimensions",
+     "covers": "surrogate keys, SCD types 0–6, role-playing, junk, degenerate, bridge dimensions, hierarchies; ScdViz"
+    },
+    {
+     "id": "modelling-facts",
+     "title": "Designing facts",
+     "covers": "transaction, periodic snapshot, accumulating snapshot, factless; additive/semi/non-additive measures, late-arriving facts, currency conversion"
+    },
+    {
+     "id": "modelling-data-vault",
+     "title": "Data Vault in one lesson",
+     "covers": "hubs, links, satellites, when it is used and when it is overkill"
+    },
+    {
+     "id": "modelling-medallion-lakehouse",
+     "title": "Medallion and lakehouse",
+     "covers": "bronze/silver/gold, Delta/Iceberg/Hudi concepts, ACID on files, time travel; MedallionStepper"
+    },
+    {
+     "id": "modelling-warehouse-architecture",
+     "title": "Warehouse architecture",
+     "covers": "Inmon vs Kimball, staging, ODS, marts, MPP columnar engines, distribution/partition/cluster keys"
+    },
+    {
+     "id": "modelling-quality-contracts",
+     "title": "Quality and data contracts",
+     "covers": "tests, expectations, contracts between teams, SLAs"
+    },
+    {
+     "id": "modelling-lineage-catalog",
+     "title": "Lineage, catalog and metadata",
+     "covers": "column-level lineage, ownership, glossary"
+    },
+    {
+     "id": "modelling-semantic-layer",
+     "title": "Semantic layer and metrics",
+     "covers": "one definition of revenue, KPI governance, semantic models"
+    },
+    {
+     "id": "modelling-finance-case-study",
+     "title": "Case study: model Kollana Tech's GL",
+     "covers": "star schema, runnable in the browser"
+    }
+   ]
+  }
+ ],
+ "power-automate": [
+  {
+   "module": "Concepts",
+   "lessons": [
+    {
+     "id": "power-automate-ecosystem",
+     "title": "The Power Platform map",
+     "covers": "Power Apps, Power Automate, Power BI, Copilot Studio, Dataverse; tenants, environments, solutions, DLP policies; cloud vs desktop flows (and why desktop RPA is out of scope)"
+    },
+    {
+     "id": "power-automate-basics",
+     "title": "Your first cloud flow",
+     "covers": "triggers (automated, instant, scheduled), actions, dynamic content, run history, testing"
+    }
+   ]
+  },
+  {
+   "module": "Building flows",
+   "lessons": [
+    {
+     "id": "power-automate-expressions",
+     "title": "Expressions and data operations",
+     "covers": "expression functions, variables, Compose, Select, Filter array, Join, Parse JSON, dates, strings"
+    },
+    {
+     "id": "power-automate-logic",
+     "title": "Control flow",
+     "covers": "Condition, Switch, Apply to each, Do until, concurrency, scopes"
+    },
+    {
+     "id": "power-automate-sharepoint-excel-outlook",
+     "title": "SharePoint, OneDrive, Excel and Outlook",
+     "covers": "libraries and lists, file triggers, Excel Online tables and their pitfalls, mail actions, attachments"
+    },
+    {
+     "id": "power-automate-approvals-teams",
+     "title": "Approvals and Teams",
+     "covers": "approval types, adaptive cards, posting to channels, waiting for a response"
+    },
+    {
+     "id": "power-automate-http-custom-connectors",
+     "title": "HTTP and custom connectors",
+     "covers": "HTTP action, auth options, calling an Azure Function or REST API, custom connector basics, premium implications"
+    }
+   ]
+  },
+  {
+   "module": "Reliability and operations",
+   "lessons": [
+    {
+     "id": "power-automate-errors",
+     "title": "Error handling",
+     "covers": "Configure run after, scopes as try/catch, retry policies, timeouts, logging to a SharePoint list; FlowSimulator"
+    },
+    {
+     "id": "power-automate-child-flows-scheduling",
+     "title": "Child flows, schedules and limits",
+     "covers": "child flows, recurrence, throttling and platform limits, designing for idempotency"
+    },
+    {
+     "id": "power-automate-alm-governance",
+     "title": "Solutions, ALM and governance",
+     "covers": "solutions, environment variables, connection references, export/import, ownership, DLP, monitoring"
+    },
+    {
+     "id": "power-automate-licensing",
+     "title": "Licensing and premium connectors",
+     "covers": "what needs premium (HTTP etc.), seeded vs per-user vs per-flow concepts, the developer plan if available; **never state prices: check the current Microsoft page**"
+    }
+   ]
+  }
+ ],
+ "power-bi": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "power-bi-architecture",
+     "title": "Power BI architecture",
+     "covers": "Desktop vs Service, workspaces, semantic models, Import vs DirectQuery vs composite vs Direct Lake, licensing concepts"
+    },
+    {
+     "id": "power-bi-power-query",
+     "title": "Power Query",
+     "covers": "M basics, transformations, query folding, parameters"
+    },
+    {
+     "id": "power-bi-modelling",
+     "title": "Data modelling in Power BI",
+     "covers": "star schema, relationships, cardinality, filter direction, role-playing dates, calendar tables"
+    },
+    {
+     "id": "power-bi-dax-basics",
+     "title": "DAX fundamentals",
+     "covers": "measures vs calculated columns, row vs filter context, CALCULATE, iterators"
+    },
+    {
+     "id": "power-bi-dax-time-intelligence",
+     "title": "Time intelligence",
+     "covers": "YTD, MTD, prior period, fiscal calendar April–March, custom calendars"
+    },
+    {
+     "id": "power-bi-visual-design",
+     "title": "Reports that get used",
+     "covers": "choosing visuals, KPIs, drill-through, tooltips, bookmarks, accessibility"
+    },
+    {
+     "id": "power-bi-security-rls",
+     "title": "Security",
+     "covers": "row-level security (static and dynamic), object-level security, workspace roles"
+    },
+    {
+     "id": "power-bi-service-refresh",
+     "title": "Service, gateways and refresh",
+     "covers": "publishing, scheduled and incremental refresh, gateways, deployment pipelines, paginated reports"
+    },
+    {
+     "id": "power-bi-performance-governance",
+     "title": "Performance and governance",
+     "covers": "VertiPaq, aggregations, DAX Studio concept, certified datasets, lineage view"
+    },
+    {
+     "id": "power-bi-finance-lab",
+     "title": "Lab: budget-vs-actual report on Kollana Tech (also the report Project A and B point to)",
+     "covers": ""
+    }
+   ]
+  }
+ ],
+ "copilot-studio": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "copilot-studio-concepts",
+     "title": "Agents, topics and generative answers",
+     "covers": "what Copilot Studio is, agents vs bots, knowledge sources"
+    },
+    {
+     "id": "copilot-studio-build-agent",
+     "title": "Build an agent",
+     "covers": "topics, entities, variables, authoring"
+    },
+    {
+     "id": "copilot-studio-actions-flows",
+     "title": "Actions and flows",
+     "covers": "calling Power Automate flows and connectors"
+    },
+    {
+     "id": "copilot-studio-knowledge-security",
+     "title": "Knowledge and security",
+     "covers": "grounding on SharePoint, authentication, DLP, analytics"
+    },
+    {
+     "id": "copilot-studio-publish-alm",
+     "title": "Publish and manage",
+     "covers": "Teams and web channels, solutions, ALM"
+    },
+    {
+     "id": "copilot-studio-lab",
+     "title": "Lab: an agent that triggers the GST reconciliation flow",
+     "covers": ""
+    }
+   ]
+  }
+ ],
+ "http-rest": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "http-rest-principles",
+     "title": "REST principles",
+     "covers": "resources, verbs, safe/idempotent methods, status codes, content negotiation"
+    },
+    {
+     "id": "http-rest-api-design",
+     "title": "Designing an API",
+     "covers": "naming, versioning, offset vs cursor pagination, filtering and sorting, error format (problem details)"
+    },
+    {
+     "id": "http-rest-openapi",
+     "title": "OpenAPI",
+     "covers": "the contract, schema-first vs code-first, Swagger UI, generating clients"
+    },
+    {
+     "id": "http-rest-auth-patterns",
+     "title": "Auth patterns for APIs",
+     "covers": "API keys, bearer tokens, OAuth scopes, HMAC-signed webhooks, where Entra fits"
+    },
+    {
+     "id": "http-rest-webhooks-limits",
+     "title": "Webhooks and rate limits",
+     "covers": "receiving and sending webhooks, retries, idempotency keys, rate-limit headers, backoff"
+    },
+    {
+     "id": "http-rest-api-testing",
+     "title": "Testing an API",
+     "covers": "curl/httpie/Postman or Bruno, contract tests, what to check before you ship"
+    }
+   ]
+  }
+ ],
+ "fastapi": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "fastapi-hello-routes",
+     "title": "First API",
+     "covers": "install, routes, uvicorn, `/docs`, path and query params"
+    },
+    {
+     "id": "fastapi-bodies-pydantic",
+     "title": "Request bodies and Pydantic",
+     "covers": "models, validation, response models, status codes"
+    },
+    {
+     "id": "fastapi-errors-responses",
+     "title": "Errors and responses",
+     "covers": "HTTPException, custom handlers, consistent error format"
+    },
+    {
+     "id": "fastapi-dependency-injection",
+     "title": "Dependency injection",
+     "covers": "`Depends`, shared resources, sub-dependencies, overriding in tests"
+    },
+    {
+     "id": "fastapi-auth-jwt",
+     "title": "Auth in FastAPI",
+     "covers": "OAuth2 password flow, JWT access tokens, role-based access; JwtDecoder"
+    },
+    {
+     "id": "fastapi-database-sqlalchemy",
+     "title": "Databases",
+     "covers": "SQLAlchemy sessions, models, Alembic migrations, transactions"
+    },
+    {
+     "id": "fastapi-background-uploads",
+     "title": "Background tasks and uploads",
+     "covers": "BackgroundTasks, file uploads, large files, job status endpoints"
+    },
+    {
+     "id": "fastapi-middleware-logging",
+     "title": "Middleware, CORS and logging",
+     "covers": "request IDs, structured logs, CORS, timing"
+    },
+    {
+     "id": "fastapi-testing",
+     "title": "Testing",
+     "covers": "TestClient, pytest fixtures, dependency overrides, testing auth and DB"
+    },
+    {
+     "id": "fastapi-production-structure",
+     "title": "Production structure",
+     "covers": "project layout, settings, async vs sync, workers (uvicorn/gunicorn), health checks"
+    }
+   ]
+  }
+ ],
+ "react-dashboards": [
+  {
+   "module": "Concepts and setup",
+   "lessons": [
+    {
+     "id": "react-dashboards-web-concepts",
+     "title": "How a web app works",
+     "covers": "HTML, CSS and JavaScript, the browser as a runtime, single-page app vs server-rendered page, the build step, static files, why a browser app can never keep a secret, where React sits in a data product"
+    },
+    {
+     "id": "react-dashboards-javascript-essentials",
+     "title": "JavaScript you need",
+     "covers": "`const`/`let`, functions and arrow functions, objects and arrays, destructuring and spread, `map`/`filter`/`reduce` next to Python comprehensions, modules (`import`/`export`), `async`/`await` and `fetch`, JSON, `===` and truthiness traps, numbers and dates"
+    },
+    {
+     "id": "react-dashboards-setup-vite",
+     "title": "Setup on Windows",
+     "covers": "Node.js and npm, create a Vite React project, folder tour, dev server and hot reload, `npm run build`, `.env` files and `VITE_` variables (everything in them is public), VS Code helpers, common install errors"
+    }
+   ]
+  },
+  {
+   "module": "React in practice",
+   "lessons": [
+    {
+     "id": "react-dashboards-components-state",
+     "title": "Components, props and state",
+     "covers": "JSX, props, `useState`, events, lists and keys, conditional rendering, lifting state up, derived values"
+    },
+    {
+     "id": "react-dashboards-effects-fetching",
+     "title": "Fetching data",
+     "covers": "`useEffect` and its dependency array, calling the FastAPI endpoint, loading / error / empty states, cancelling stale requests with AbortController, a reusable `useApi` hook, why data-fetching libraries exist (concept)"
+    },
+    {
+     "id": "react-dashboards-tables-charts",
+     "title": "Tables, KPI cards and charts",
+     "covers": "server-side pagination, sorting and filtering against the API, a charting library, accessible tables, Indian number formats (`Intl.NumberFormat('en-IN')`, lakh and crore), dates and the April–March fiscal year"
+    },
+    {
+     "id": "react-dashboards-forms-routing",
+     "title": "Forms, uploads and routing",
+     "covers": "controlled inputs, validation messages, file upload with progress to the API, React Router pages, filters kept in the URL, the protected-route pattern (concept)"
+    }
+   ]
+  },
+  {
+   "module": "Production and interview",
+   "lessons": [
+    {
+     "id": "react-dashboards-cors-build-serve",
+     "title": "CORS, builds and serving",
+     "covers": "same-origin vs cross-origin, preflight requests, FastAPI CORS settings, `npm run build`, serving static files with nginx (the Academy's own Dockerfile and nginx config as the worked example), single-page fallback routing, cache headers, per-environment configuration"
+    },
+    {
+     "id": "react-dashboards-quality-security",
+     "title": "Testing, accessibility and security",
+     "covers": "Vitest and Testing Library basics, keyboard and screen-reader basics, why React escapes output and when `dangerouslySetInnerHTML` breaks that, secrets never in the bundle, dependency audit, error boundaries"
+    },
+    {
+     "id": "react-dashboards-lab",
+     "title": "Lab: the reviewer screen",
+     "covers": "a React app for the Payroll Bank Mandate Validation API: exceptions table with filters and pagination, KPI cards, file upload, a resolve button; first against a mock, then against your local FastAPI"
+    }
+   ]
+  }
+ ],
+ "azure": [
+  {
+   "module": "Concepts and setup",
+   "lessons": [
+    {
+     "id": "azure-cloud-concepts",
+     "title": "Cloud concepts",
+     "covers": "IaaS/PaaS/SaaS/serverless, shared responsibility, regions and availability zones, pricing models in principle"
+    },
+    {
+     "id": "azure-account-portal-cli",
+     "title": "Account, portal and CLI",
+     "covers": "free account, tenant/subscription/management groups/resource groups, tags and naming, Portal, Cloud Shell, `az` CLI, PowerShell"
+    },
+    {
+     "id": "azure-cost-management",
+     "title": "Cost management and budgets",
+     "covers": "budgets and alerts, cost analysis, tags, shutting things down, FinOps hygiene *(do this before creating anything else)*"
+    }
+   ]
+  },
+  {
+   "module": "Storage and data services",
+   "lessons": [
+    {
+     "id": "azure-storage-blob-adls",
+     "title": "Storage accounts, Blob and ADLS Gen2",
+     "covers": "redundancy (LRS/ZRS/GRS), access tiers, hierarchical namespace, SAS vs keys vs RBAC, lifecycle rules, soft delete"
+    },
+    {
+     "id": "azure-databases",
+     "title": "Azure databases overview",
+     "covers": "Azure SQL Database / Managed Instance, PostgreSQL Flexible Server, Cosmos DB, Synapse and Fabric in one page; choosing"
+    },
+    {
+     "id": "azure-postgres-lab",
+     "title": "Lab: Azure Database for PostgreSQL",
+     "covers": "create a Flexible Server, admin login, firewall rule for your own IP, SSL, connect with `psql`, DBeaver and Python (psycopg), how a connection string is built, load the Kollana CSVs, a read-only role, the five most common connection errors (timeout means firewall, password failed, SSL required, wrong host, wrong database), tear down"
+    },
+    {
+     "id": "azure-sql-lab",
+     "title": "Lab: Azure SQL Database",
+     "covers": "logical server vs database, serverless vs provisioned (concept, \"check the current offer\"), firewall rules and \"allow Azure services\", connect with a SQL client and `pyodbc` plus the ODBC driver (check the current driver name), T-SQL vs PostgreSQL differences, load a table, tear down"
+    }
+   ]
+  },
+  {
+   "module": "Compute, network and load balancing",
+   "lessons": [
+    {
+     "id": "azure-compute-options",
+     "title": "Compute options",
+     "covers": "VMs, App Service, Functions, Container Apps, AKS: how to choose"
+    },
+    {
+     "id": "azure-networking-vnet",
+     "title": "Virtual networks",
+     "covers": "VNet, subnets, NSGs, service vs private endpoints, DNS, peering, VPN/ExpressRoute concepts"
+    },
+    {
+     "id": "azure-vm-lab",
+     "title": "Lab: a Linux virtual machine",
+     "covers": "image and size choice (no prices), resource group and NSG, SSH-key login from PowerShell, open one port and no more, install and run a small web service, managed disk and public IP, a system-assigned managed identity on the VM, auto-shutdown, stop vs deallocate, Bastion as the safer door (concept), RDP for a Windows VM, delete everything"
+    },
+    {
+     "id": "azure-load-balancing",
+     "title": "Load balancing in Azure",
+     "covers": "Load Balancer (L4), Application Gateway + WAF (L7), Front Door (global), Traffic Manager (DNS); health probes; a decision tree; LoadBalancer simulator"
+    }
+   ]
+  },
+  {
+   "module": "Operate",
+   "lessons": [
+    {
+     "id": "azure-monitor-logging",
+     "title": "Monitor and logging",
+     "covers": "Azure Monitor, Log Analytics, KQL basics, App Insights, alerts"
+    },
+    {
+     "id": "azure-vs-aws-gcp",
+     "title": "Azure vs AWS vs GCP",
+     "covers": "service equivalents cheat sheet so you can talk to any team"
+    },
+    {
+     "id": "azure-lab-data-landing-zone",
+     "title": "Lab: a secure data landing zone",
+     "covers": "resource group, storage with RBAC, upload Kollana data, budget alert, tear down"
+    }
+   ]
+  }
+ ],
+ "entra": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "entra-concepts",
+     "title": "Entra ID concepts",
+     "covers": "tenants and directories, users/groups/licences, B2B guests, External ID (B2C) concept, hybrid identity concept; the Azure AD → Entra rename"
+    },
+    {
+     "id": "entra-rbac-azure",
+     "title": "Roles and RBAC",
+     "covers": "Entra roles vs Azure RBAC, scopes and inheritance, role assignments, custom roles, PIM concept, least privilege"
+    },
+    {
+     "id": "entra-app-registrations",
+     "title": "App registrations and service principals",
+     "covers": "registration vs enterprise app, secrets vs certificates, redirect URIs, API permissions, admin consent"
+    },
+    {
+     "id": "entra-register-api-and-spa",
+     "title": "Register an API and a single-page app",
+     "covers": "the three registrations the capstone uses (web API, single-page app, background daemon), Application ID URI and scopes, app roles, the SPA platform and redirect URIs (why a SPA has no secret), API permissions and admin consent, assigning users to roles, the same steps with `az ad app` commands, a checklist the `azure-e2e` capstone starts from"
+    },
+    {
+     "id": "entra-oauth-oidc-in-practice",
+     "title": "OAuth and OIDC in practice",
+     "covers": "auth code + PKCE, client credentials with MSAL in Python, scopes and `.default`, reading and validating tokens and claims; OAuthFlow"
+    },
+    {
+     "id": "entra-managed-identity",
+     "title": "Managed identities",
+     "covers": "system vs user assigned, `DefaultAzureCredential`, no secrets in code"
+    },
+    {
+     "id": "entra-key-vault",
+     "title": "Key Vault",
+     "covers": "secrets, keys, certificates, RBAC vs access policies, rotation, Key Vault references"
+    },
+    {
+     "id": "entra-conditional-access-mfa-sso",
+     "title": "Conditional Access, MFA and SSO",
+     "covers": "policies, MFA methods, SSO to SaaS apps via OIDC/SAML"
+    },
+    {
+     "id": "entra-graph-api",
+     "title": "Microsoft Graph",
+     "covers": "delegated vs application permissions, reading users, SharePoint and Teams data"
+    },
+    {
+     "id": "entra-protect-your-api",
+     "title": "Protecting your own API",
+     "covers": "validating Entra tokens in the FastAPI service you built in Stage 3, app roles, on-behalf-of flow concept"
+    },
+    {
+     "id": "entra-security-posture",
+     "title": "Security posture",
+     "covers": "Defender for Cloud concept, Azure Policy, audit logs, threat modelling a data product"
+    },
+    {
+     "id": "entra-auth-end-to-end",
+     "title": "End-to-end: how a request is authenticated",
+     "covers": "one worked example from browser click to database row, with the 10 most common failure messages and fixes"
+    }
+   ]
+  }
+ ],
+ "azure-functions": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "azure-functions-serverless-concepts",
+     "title": "Serverless and Functions concepts",
+     "covers": "events, triggers and bindings, hosting plans (Consumption, Flex Consumption, Premium, Dedicated), cold starts, scaling"
+    },
+    {
+     "id": "azure-functions-local-dev",
+     "title": "Local development",
+     "covers": "Core Tools, VS Code, the Python v2 programming model, debugging"
+    },
+    {
+     "id": "azure-functions-http-trigger",
+     "title": "HTTP-triggered functions",
+     "covers": "routes, auth levels, request validation with Pydantic, responses, errors"
+    },
+    {
+     "id": "azure-functions-triggers-bindings",
+     "title": "Other triggers",
+     "covers": "timer, blob, queue, Event Grid, Service Bus; Durable Functions concept; idempotency"
+    },
+    {
+     "id": "azure-functions-config-identity",
+     "title": "Configuration and identity",
+     "covers": "app settings, Key Vault references, managed identity to Storage/SQL"
+    },
+    {
+     "id": "azure-functions-deploy-monitor",
+     "title": "Deploy and monitor",
+     "covers": "zip deploy, GitHub Actions, App Insights, retries and poison messages"
+    },
+    {
+     "id": "azure-functions-lab",
+     "title": "Lab: the reconciliation function",
+     "covers": "match on GSTIN + invoice + amount with tolerance, fuzzy typos, Excel report out"
+    }
+   ]
+  }
+ ],
+ "docker": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "docker-concepts",
+     "title": "Containers vs VMs",
+     "covers": "namespaces and cgroups in plain words, images, layers, registries"
+    },
+    {
+     "id": "docker-install-windows",
+     "title": "Install on Windows",
+     "covers": "WSL2 backend, Docker Desktop vs alternatives, first container, common errors"
+    },
+    {
+     "id": "docker-dockerfile",
+     "title": "Writing Dockerfiles",
+     "covers": "instructions, layer cache order, multi-stage builds, slim images, non-root user; DockerCache"
+    },
+    {
+     "id": "docker-run-volumes-networking",
+     "title": "Running containers",
+     "covers": "ports, volumes vs bind mounts, networks, env vars, logs, exec"
+    },
+    {
+     "id": "docker-compose",
+     "title": "Docker Compose",
+     "covers": "API + Postgres + Adminer, healthchecks, depends_on, profiles, `.env`"
+    },
+    {
+     "id": "docker-security-debugging",
+     "title": "Security and debugging",
+     "covers": "scanning, secrets, resource limits, \"why won't it start\""
+    },
+    {
+     "id": "docker-registries",
+     "title": "Registries",
+     "covers": "Docker Hub, GitHub Container Registry, Azure Container Registry, tags vs digests"
+    },
+    {
+     "id": "docker-lab",
+     "title": "Lab: containerise the FastAPI service with Postgres via Compose, then add the React app as an nginx container (the multi-stage build from `react-dashboards-cors-build-serve`)",
+     "covers": ""
+    }
+   ]
+  }
+ ],
+ "github-actions": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "github-actions-concepts",
+     "title": "Workflows, events, jobs, runners",
+     "covers": "YAML anatomy, triggers, matrix"
+    },
+    {
+     "id": "github-actions-ci-python",
+     "title": "CI for Python",
+     "covers": "Ruff + pytest, caching, matrix, status checks, branch protection"
+    },
+    {
+     "id": "github-actions-docker-build",
+     "title": "Build and push images",
+     "covers": "GHCR / ACR, tags, caching layers"
+    },
+    {
+     "id": "github-actions-secrets-oidc",
+     "title": "Secrets, environments and OIDC to Azure",
+     "covers": "federated credentials (no stored cloud keys), environment approvals"
+    },
+    {
+     "id": "github-actions-cd-deploy",
+     "title": "Continuous deployment",
+     "covers": "deploy on merge, rollbacks, environments"
+    },
+    {
+     "id": "github-actions-security",
+     "title": "Hardening",
+     "covers": "least-privilege tokens, pinning actions, Dependabot"
+    }
+   ]
+  }
+ ],
+ "azure-deploy": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "azure-deploy-acr",
+     "title": "Azure Container Registry",
+     "covers": "push, pull, tags, access via managed identity"
+    },
+    {
+     "id": "azure-deploy-container-apps",
+     "title": "Container Apps",
+     "covers": "environments, ingress, revisions, scaling (including to zero), traffic splitting"
+    },
+    {
+     "id": "azure-deploy-app-service",
+     "title": "App Service alternative",
+     "covers": "when to prefer it, slots, plans"
+    },
+    {
+     "id": "azure-deploy-secrets-identity",
+     "title": "Secrets and identity",
+     "covers": "Key Vault references, managed identity to Postgres/Storage"
+    },
+    {
+     "id": "azure-deploy-observability",
+     "title": "App Insights",
+     "covers": "logs, traces, metrics, availability tests, alerts"
+    },
+    {
+     "id": "azure-deploy-domain-tls",
+     "title": "Custom domain and TLS",
+     "covers": "DNS records, certificates, Front Door / App Gateway recap"
+    },
+    {
+     "id": "azure-deploy-cicd-pipeline",
+     "title": "The full pipeline",
+     "covers": "GitHub Actions → ACR → Container Apps with OIDC"
+    },
+    {
+     "id": "azure-deploy-cost-reliability",
+     "title": "Cost and reliability",
+     "covers": "scale-to-zero trade-offs, probes, zero-downtime deploys, budgets"
+    }
+   ]
+  }
+ ],
+ "azure-e2e": [
+  {
+   "module": "Design the product",
+   "lessons": [
+    {
+     "id": "azure-e2e-architecture",
+     "title": "The product and its connection map",
+     "covers": "the Kollana payroll-validation product as boxes (files in Blob → loader → PostgreSQL → FastAPI on Container Apps → React app, a signed-in reviewer, App Insights watching); one table that lists, for every arrow, the protocol and port, the credential (managed identity, token, Key Vault secret) and what allows it (RBAC role, firewall rule, CORS); naming and tags, build order, teardown order; what we chose and what we did not (VM, AKS, Functions) and why"
+    }
+   ]
+  },
+  {
+   "module": "The data and API tiers on Azure",
+   "lessons": [
+    {
+     "id": "azure-e2e-foundation",
+     "title": "Provision the foundation with `az`",
+     "covers": "one resource group, Log Analytics and Application Insights, a storage account with raw and processed containers, a PostgreSQL Flexible Server, Key Vault, Container Registry and a Container Apps environment; one re-runnable PowerShell script, budget check first, a \"what exists now\" checklist"
+    },
+    {
+     "id": "azure-e2e-load-data",
+     "title": "From Blob to PostgreSQL",
+     "covers": "upload the Kollana payroll files to the raw container, a Python loader using `DefaultAzureCredential` and the Blob SDK, the RBAC role your own user needs on the storage account, validate and load with `COPY`, safe re-runs (idempotent), move files to processed, run it locally first"
+    },
+    {
+     "id": "azure-e2e-database-access",
+     "title": "Database access done properly",
+     "covers": "an Entra admin on PostgreSQL, token login vs a password kept in Key Vault, one database role for the API and one read-only role, `GRANT` with least privilege, SSL, firewall rule vs private access, a \"cannot connect\" triage by layer (DNS, network, TLS, login, permission)"
+    },
+    {
+     "id": "azure-e2e-api-container-apps",
+     "title": "The API on Container Apps",
+     "covers": "the image into ACR, a Container App with a system-assigned managed identity, secrets through Key Vault references, ingress and health probes, environment variables, revisions, logs; reaching PostgreSQL and Blob with no password in code"
+    }
+   ]
+  },
+  {
+   "module": "Identity and the React app",
+   "lessons": [
+    {
+     "id": "azure-e2e-secure-api-roles",
+     "title": "Secure the API with Entra",
+     "covers": "the API registration from `entra-register-api-and-spa` wired into FastAPI: validate issuer, audience and signature, scopes vs app roles, map roles to uploader / reviewer / admin, call the API with a token from the CLI before any screen exists, 401 vs 403"
+    },
+    {
+     "id": "azure-e2e-react-msal-login",
+     "title": "Sign in from React",
+     "covers": "MSAL for React: provider, redirect vs popup sign-in, scopes, silent token acquisition, sign-out, reading roles from the token, the failures people hit (redirect URI mismatch, wrong tenant, missing consent), and why no secret exists in the browser"
+    },
+    {
+     "id": "azure-e2e-react-calls-api",
+     "title": "The reviewer app talks to the API",
+     "covers": "attach the bearer token to every request, handle 401 and 403, CORS on the API, hide buttons by role (the server still enforces), upload a payroll file and watch the job status, the exceptions table and resolve action from `react-dashboards-lab`"
+    }
+   ]
+  },
+  {
+   "module": "Host, ship and operate",
+   "lessons": [
+    {
+     "id": "azure-e2e-host-react",
+     "title": "Host the React app",
+     "covers": "three options (Static Web Apps, a Blob static website behind a CDN or Front Door, an nginx container on Container Apps), choosing one, deploying the build, single-page fallback, build-time configuration (public by design), updating the redirect URIs, same-origin proxy vs cross-origin CORS"
+    },
+    {
+     "id": "azure-e2e-vm-variant",
+     "title": "Variant: the same product on a virtual machine",
+     "covers": "Docker Compose on the Linux VM from `azure-vm-lab`, an nginx reverse proxy and TLS, an NSG with only 80 and 443 open, the VM's managed identity reaching PostgreSQL and Blob, patching and backups are now your job; when this beats Container Apps and when it does not"
+    },
+    {
+     "id": "azure-e2e-cicd",
+     "title": "One pipeline per tier",
+     "covers": "GitHub Actions with OIDC (no stored keys): API image → ACR → new Container Apps revision, React build → hosting, environments and approval, a smoke test that hits `/health` and checks the sign-in page loads"
+    },
+    {
+     "id": "azure-e2e-troubleshooting",
+     "title": "Operate and debug the whole chain",
+     "covers": "App Insights from the browser through the API to the database, availability test and alerts, a failure table by arrow (a long timeout usually means a firewall; `password authentication failed`; `AADSTS50011` redirect mismatch; 401 vs 403; CORS preflight; 502 from ingress; crash loop; `AuthorizationPermissionMismatch`; Key Vault `Forbidden`), cost review, tear down in the right order"
+    },
+    {
+     "id": "azure-e2e-lab",
+     "title": "Lab: ship the product",
+     "covers": "a checklist from an empty subscription to a signed-in React screen that shows exceptions from PostgreSQL, a README with the architecture diagram and connection table, screenshots, a walkthrough video, delete the resource group"
+    }
+   ]
+  }
+ ],
+ "dlt": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "dlt-stack-overview",
+     "title": "The modern data stack in one picture",
+     "covers": "ingestion → transformation → orchestration → serving, ELT, bronze/silver/gold, and the Phase workspace setup *(previously `p3-mds-overview`)*"
+    },
+    {
+     "id": "dlt-concepts",
+     "title": "dlt concepts and first pipeline",
+     "covers": "pipeline, source, resource, destination; install; load a CSV into Postgres"
+    },
+    {
+     "id": "dlt-resources-sources",
+     "title": "Sources and resources",
+     "covers": "generators, `@dlt.resource`/`@dlt.source`, the REST API source, pagination, auth"
+    },
+    {
+     "id": "dlt-incremental-loading",
+     "title": "Incremental loading",
+     "covers": "cursor fields, state, write dispositions (append, replace, merge), primary keys, idempotent re-runs"
+    },
+    {
+     "id": "dlt-schema-contracts",
+     "title": "Schema evolution and contracts",
+     "covers": "inferred schema, new columns, variant columns, nested data to child tables, freeze/evolve contracts"
+    },
+    {
+     "id": "dlt-destinations",
+     "title": "Destinations",
+     "covers": "Postgres, DuckDB, filesystem/Parquet, warehouse pointers; staging"
+    },
+    {
+     "id": "dlt-testing-observability",
+     "title": "Testing and observability",
+     "covers": "load info, tracing, retries, failing loudly, alerts"
+    },
+    {
+     "id": "dlt-lab",
+     "title": "Lab: files and a REST API into bronze",
+     "covers": "daily CSV drops + a FastAPI mock, with a schema change"
+    }
+   ]
+  }
+ ],
+ "airbyte": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "airbyte-concepts",
+     "title": "Airbyte concepts",
+     "covers": "connectors, sources, destinations, connections, sync modes (full refresh, incremental append, incremental dedupe), normalisation"
+    },
+    {
+     "id": "airbyte-install",
+     "title": "Install and first sync",
+     "covers": "`abctl` / Docker, UI tour, resources, common errors"
+    },
+    {
+     "id": "airbyte-connectors-config",
+     "title": "Configuring connectors",
+     "covers": "Postgres source, file source, REST via the Connector Builder, destinations"
+    },
+    {
+     "id": "airbyte-schemas-state-scheduling",
+     "title": "Schemas, state and scheduling",
+     "covers": "schema change handling, resets, state, schedules, notifications"
+    },
+    {
+     "id": "airbyte-cdc-debezium",
+     "title": "CDC explained",
+     "covers": "WAL and logical replication, log-based CDC vs polling, deletes, ordering"
+    },
+    {
+     "id": "airbyte-build-vs-buy",
+     "title": "Airbyte vs dlt vs Fivetran-style tools",
+     "covers": "when to build, when to buy, cost and control"
+    },
+    {
+     "id": "airbyte-api-lab",
+     "title": "Lab: sync Postgres → bronze and trigger it from the API",
+     "covers": "API/Terraform provider concept, hand-off to the orchestrators"
+    }
+   ]
+  }
+ ],
+ "dbt": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "dbt-concepts-install",
+     "title": "dbt concepts and setup",
+     "covers": "what dbt does and does not do, project layout, `profiles.yml`, `dbt run`"
+    },
+    {
+     "id": "dbt-models-materializations",
+     "title": "Models and materializations",
+     "covers": "view, table, incremental, ephemeral; choosing"
+    },
+    {
+     "id": "dbt-ref-sources-lineage",
+     "title": "ref(), sources and lineage",
+     "covers": "dependencies, source freshness, the DAG"
+    },
+    {
+     "id": "dbt-jinja-macros",
+     "title": "Jinja and macros",
+     "covers": "templating, control flow, writing macros"
+    },
+    {
+     "id": "dbt-tests",
+     "title": "Tests",
+     "covers": "generic and singular tests, not_null/unique/relationships/accepted_values, packages"
+    },
+    {
+     "id": "dbt-incremental-snapshots",
+     "title": "Incremental models and snapshots",
+     "covers": "strategies, merge keys, SCD2 snapshots"
+    },
+    {
+     "id": "dbt-docs-contracts",
+     "title": "Docs, contracts and exposures",
+     "covers": "docs site, lineage graph, model contracts, versions, exposures"
+    },
+    {
+     "id": "dbt-seeds-packages",
+     "title": "Seeds and packages",
+     "covers": "seeds, dbt_utils, expectations-style tests"
+    },
+    {
+     "id": "dbt-project-structure",
+     "title": "Project structure",
+     "covers": "staging / intermediate / marts, naming, style guide, semantic layer concept"
+    },
+    {
+     "id": "dbt-ci-state",
+     "title": "CI with dbt",
+     "covers": "`dbt build`, state-based slim CI, environments"
+    },
+    {
+     "id": "dbt-lab",
+     "title": "Lab: silver and gold for Sales & Inventory",
+     "covers": "typed staging, price-volume-mix, slow-moving inventory ageing, promotion uplift"
+    }
+   ]
+  }
+ ],
+ "adf": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "adf-concepts",
+     "title": "ADF concepts",
+     "covers": "factory, pipelines, activities, datasets, linked services, integration runtimes, the control/data plane"
+    },
+    {
+     "id": "adf-copy-activity",
+     "title": "Copy activity",
+     "covers": "sources and sinks, mapping, performance concepts, Blob/ADLS ↔ Postgres/SQL"
+    },
+    {
+     "id": "adf-data-flows",
+     "title": "Mapping data flows",
+     "covers": "transformations, debug clusters, when to use data flows vs SQL/dbt/Databricks"
+    },
+    {
+     "id": "adf-triggers-parameters",
+     "title": "Triggers and parameters",
+     "covers": "schedule, tumbling window, event triggers; parameters, variables, expressions"
+    },
+    {
+     "id": "adf-control-flow",
+     "title": "Control flow",
+     "covers": "If, ForEach, Until, Lookup, Web, error paths and retries"
+    },
+    {
+     "id": "adf-security-networking",
+     "title": "Security and networking",
+     "covers": "managed identity, Key Vault, private endpoints, self-hosted integration runtime"
+    },
+    {
+     "id": "adf-cicd-monitoring",
+     "title": "CI/CD and monitoring",
+     "covers": "Git integration, ARM/Bicep deployment, alerts, run history"
+    },
+    {
+     "id": "adf-vs-others",
+     "title": "ADF vs Airflow vs Databricks Workflows vs Fabric pipelines",
+     "covers": "choosing"
+    },
+    {
+     "id": "adf-lab",
+     "title": "Lab: parameterised copy pipeline with an event trigger and an alert",
+     "covers": ""
+    }
+   ]
+  }
+ ],
+ "airflow": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "airflow-concepts-architecture",
+     "title": "Airflow concepts and architecture",
+     "covers": "scheduler, executor, workers, metadata DB, web server; DAG, task, operator, XCom"
+    },
+    {
+     "id": "airflow-install-docker",
+     "title": "Install with Docker Compose",
+     "covers": "first DAG, the UI, logs, common errors"
+    },
+    {
+     "id": "airflow-dags-taskflow",
+     "title": "Writing DAGs",
+     "covers": "the TaskFlow API, dependencies, params, templating"
+    },
+    {
+     "id": "airflow-scheduling-backfills",
+     "title": "Scheduling semantics",
+     "covers": "data intervals, logical date, catchup, backfills, timetables, asset-based scheduling"
+    },
+    {
+     "id": "airflow-operators-sensors",
+     "title": "Operators, providers and sensors",
+     "covers": "Postgres/HTTP/Azure providers, sensors, deferrable operators"
+    },
+    {
+     "id": "airflow-reliability",
+     "title": "Reliability",
+     "covers": "retries, timeouts, SLAs, alerting, pools, trigger rules, idempotent tasks"
+    },
+    {
+     "id": "airflow-testing-ci",
+     "title": "Testing and CI",
+     "covers": "DAG integrity tests, unit tests, linting, deploying DAGs"
+    },
+    {
+     "id": "airflow-dbt-dlt",
+     "title": "Airflow with dbt and dlt",
+     "covers": "running dbt and dlt, Cosmos concept; lab: the Sales & Inventory pipeline"
+    },
+    {
+     "id": "airflow-production-ops",
+     "title": "Production",
+     "covers": "executors (Celery, Kubernetes), secrets backends, monitoring, upgrades, scaling"
+    }
+   ]
+  }
+ ],
+ "dagster": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "dagster-concepts",
+     "title": "Dagster concepts",
+     "covers": "software-defined assets, the asset graph, ops/jobs, resources"
+    },
+    {
+     "id": "dagster-install-project",
+     "title": "Install and project layout",
+     "covers": "`dagster dev`, code locations, the UI"
+    },
+    {
+     "id": "dagster-assets-resources",
+     "title": "Assets, resources and IO",
+     "covers": "dependencies, configurable resources, metadata"
+    },
+    {
+     "id": "dagster-partitions-backfills",
+     "title": "Partitions and backfills",
+     "covers": "time partitions, backfills, freshness"
+    },
+    {
+     "id": "dagster-schedules-sensors",
+     "title": "Schedules and sensors",
+     "covers": "cron schedules, a file-arrival sensor, run requests"
+    },
+    {
+     "id": "dagster-dbt-dlt",
+     "title": "dbt and dlt in Dagster",
+     "covers": "dbt assets, dlt assets, lineage across tools"
+    },
+    {
+     "id": "dagster-checks-observability",
+     "title": "Asset checks and observability",
+     "covers": "checks, alerts, run failure sensors, email/Teams webhook"
+    },
+    {
+     "id": "dagster-deploy-vs-airflow",
+     "title": "Deploying Dagster and choosing",
+     "covers": "Docker, Dagster+ concept, Dagster vs Airflow vs ADF"
+    }
+   ]
+  }
+ ],
+ "spark": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "spark-concepts-architecture",
+     "title": "Spark architecture",
+     "covers": "driver/executors, partitions, lazy evaluation, jobs/stages/tasks, shuffle; ShuffleViz"
+    },
+    {
+     "id": "spark-local-setup",
+     "title": "Local setup on Windows",
+     "covers": "Java, PySpark, Docker alternative, the Spark UI, common errors"
+    },
+    {
+     "id": "spark-dataframe-api",
+     "title": "DataFrame API",
+     "covers": "select/filter/withColumn/groupBy/join/window, column expressions"
+    },
+    {
+     "id": "spark-sql-catalog",
+     "title": "Spark SQL and the catalog",
+     "covers": "temp views, tables, managed vs external, the metastore"
+    },
+    {
+     "id": "spark-io-partitioning",
+     "title": "Reading and writing",
+     "covers": "Parquet/CSV/JSON, schemas, `partitionBy`, bucketing, the small-files problem"
+    },
+    {
+     "id": "spark-joins-shuffle-skew",
+     "title": "Joins, shuffles and skew",
+     "covers": "broadcast joins, sort-merge, skew handling, adaptive query execution"
+    },
+    {
+     "id": "spark-performance-tuning",
+     "title": "Performance tuning",
+     "covers": "caching, partitions, memory, serialisation, reading the Spark UI"
+    },
+    {
+     "id": "spark-udfs",
+     "title": "UDFs and pandas UDFs",
+     "covers": "when to avoid them, built-in functions first"
+    },
+    {
+     "id": "spark-structured-streaming",
+     "title": "Structured Streaming",
+     "covers": "micro-batch model, watermarks, checkpoints, output modes"
+    },
+    {
+     "id": "spark-lab",
+     "title": "Lab: Kollana GL at scale",
+     "covers": "rebuild the P&L in PySpark, compare with SQL and pandas"
+    }
+   ]
+  }
+ ],
+ "databricks": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "databricks-concepts-workspace",
+     "title": "Databricks concepts",
+     "covers": "workspace, clusters, serverless, control/data plane"
+    },
+    {
+     "id": "databricks-setup-free",
+     "title": "Getting an account",
+     "covers": "free options, first notebook, cost guard-rails"
+    },
+    {
+     "id": "databricks-notebooks-jobs",
+     "title": "Notebooks, jobs and workflows",
+     "covers": "parameters, tasks, schedules, repair runs"
+    },
+    {
+     "id": "databricks-delta-lake",
+     "title": "Delta Lake",
+     "covers": "transaction log, ACID, time travel, MERGE, schema enforcement/evolution, OPTIMIZE, Z-ORDER / clustering, VACUUM"
+    },
+    {
+     "id": "databricks-unity-catalog",
+     "title": "Unity Catalog",
+     "covers": "catalogs/schemas/tables, permissions, lineage, volumes"
+    },
+    {
+     "id": "databricks-autoloader-pipelines",
+     "title": "Auto Loader and declarative pipelines",
+     "covers": "incremental file ingestion, Lakeflow / DLT-style pipelines (\"check the current names\")"
+    },
+    {
+     "id": "databricks-sql-warehouses",
+     "title": "SQL warehouses and BI",
+     "covers": "dashboards, connecting Power BI"
+    },
+    {
+     "id": "databricks-cost-performance",
+     "title": "Cost and performance",
+     "covers": "cluster sizing, photon concept, job clusters vs all-purpose, guard-rails"
+    },
+    {
+     "id": "databricks-lab",
+     "title": "Lab: medallion pipeline on Delta",
+     "covers": "bronze → silver → gold with MERGE and time travel"
+    }
+   ]
+  }
+ ],
+ "snowflake": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "snowflake-architecture",
+     "title": "Architecture",
+     "covers": "storage / compute / cloud services, virtual warehouses, micro-partitions, caching layers"
+    },
+    {
+     "id": "snowflake-setup-trial",
+     "title": "Account setup",
+     "covers": "trial, roles, Snowsight, Python connector, cost limits"
+    },
+    {
+     "id": "snowflake-loading",
+     "title": "Loading data",
+     "covers": "stages, COPY INTO, file formats, Snowpipe, error handling"
+    },
+    {
+     "id": "snowflake-sql-features",
+     "title": "Snowflake SQL",
+     "covers": "VARIANT and FLATTEN, QUALIFY, time travel, zero-copy clone"
+    },
+    {
+     "id": "snowflake-performance-cost",
+     "title": "Performance and cost",
+     "covers": "pruning, clustering, warehouse sizing, auto-suspend, resource monitors"
+    },
+    {
+     "id": "snowflake-security-governance",
+     "title": "Security and governance",
+     "covers": "RBAC, masking policies, row access, data sharing"
+    },
+    {
+     "id": "snowflake-streams-tasks-dynamic",
+     "title": "Streams, tasks and dynamic tables",
+     "covers": "CDC and incremental pipelines inside Snowflake"
+    },
+    {
+     "id": "snowflake-dbt-python",
+     "title": "Snowflake with dbt and Python",
+     "covers": "dbt adapter, Snowpark concept, connector"
+    },
+    {
+     "id": "snowflake-lab",
+     "title": "Lab: load Kollana data, model it, mask PII, and keep cost near zero",
+     "covers": ""
+    }
+   ]
+  }
+ ],
+ "kafka": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "kafka-streaming-concepts",
+     "title": "Streaming concepts",
+     "covers": "events, topics, partitions, offsets, consumer groups, retention, ordering; KafkaPartitions simulator"
+    },
+    {
+     "id": "kafka-local-docker",
+     "title": "Run Kafka locally",
+     "covers": "Compose, CLI tools, first topic"
+    },
+    {
+     "id": "kafka-python-clients",
+     "title": "Producers and consumers in Python",
+     "covers": "serialisation, keys, acks, commits, schema registry concept"
+    },
+    {
+     "id": "kafka-connect-cdc",
+     "title": "Kafka Connect and CDC",
+     "covers": "Debezium concept, sinks, exactly-once reality"
+    },
+    {
+     "id": "kafka-stream-processing",
+     "title": "Stream processing",
+     "covers": "windows, joins, state, Flink / Spark Structured Streaming / ksqlDB overview"
+    },
+    {
+     "id": "kafka-azure-event-hubs",
+     "title": "Event Hubs and friends",
+     "covers": "Event Hubs (Kafka endpoint), Service Bus vs Event Hubs vs Event Grid"
+    },
+    {
+     "id": "kafka-ops-lab",
+     "title": "Operations and lab",
+     "covers": "lag, partition design, DLQs, schema evolution; lab: stream Kollana orders end to end"
+    }
+   ]
+  }
+ ],
+ "llm-basics": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "llm-basics-how-models-work",
+     "title": "How LLMs work",
+     "covers": "transformer intuition, tokens, embeddings, attention in plain words, pre-training vs fine-tuning vs RLHF"
+    },
+    {
+     "id": "llm-basics-tokens-context-cost",
+     "title": "Tokens, context windows, cost and latency",
+     "covers": "counting, truncation, price = tokens × rate (placeholder rates), time-to-first-token; TokenCost"
+    },
+    {
+     "id": "llm-basics-prompting",
+     "title": "Prompting",
+     "covers": "system vs user messages, few-shot, step-by-step reasoning, prompt patterns, delimiters, prompt-injection intro"
+    },
+    {
+     "id": "llm-basics-model-selection",
+     "title": "Choosing a model",
+     "covers": "open vs hosted, size vs quality vs latency vs cost, benchmarks and their limits, local models for privacy"
+    },
+    {
+     "id": "llm-basics-limits-hallucination",
+     "title": "Limits and hallucination",
+     "covers": "why models are confidently wrong, temperature, determinism, when not to use an LLM"
+    },
+    {
+     "id": "llm-basics-lab",
+     "title": "Lab: prompt by hand",
+     "covers": "extract invoice fields in a chat playground, compare prompts, record what breaks"
+    }
+   ]
+  }
+ ],
+ "llm-apis": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "llm-apis-providers",
+     "title": "Direct provider API vs Azure OpenAI",
+     "covers": "endpoints, deployments, keys vs Entra auth, content filters, quotas, region/data-residency questions"
+    },
+    {
+     "id": "llm-apis-chat-streaming-errors",
+     "title": "Chat calls, streaming and errors",
+     "covers": "messages, streaming, timeouts, rate limits, retries with backoff, idempotency"
+    },
+    {
+     "id": "llm-apis-structured-outputs",
+     "title": "Structured outputs",
+     "covers": "JSON schema, Pydantic models, validation and repair loops, confidence"
+    },
+    {
+     "id": "llm-apis-tool-calling",
+     "title": "Tool (function) calling",
+     "covers": "the tool-call loop, tool schemas, parallel calls, errors from tools; ToolCallDemo"
+    },
+    {
+     "id": "llm-apis-documents-vision",
+     "title": "Documents and images",
+     "covers": "PDF text vs scanned invoices, OCR vs vision models, layout variance"
+    },
+    {
+     "id": "llm-apis-cost-caching-batching",
+     "title": "Cost control",
+     "covers": "prompt caching concept, batching, smaller models for easy steps, token budgets"
+    },
+    {
+     "id": "llm-apis-prompt-versioning-lab",
+     "title": "Lab: a versioned extraction function",
+     "covers": "prompt files in Git, schema, retries, logging every call"
+    }
+   ]
+  }
+ ],
+ "vector-db": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "vector-db-embeddings",
+     "title": "Embeddings",
+     "covers": "what they are, cosine vs dot product, dimensions, embedding models and their trade-offs"
+    },
+    {
+     "id": "vector-db-chunking",
+     "title": "Chunking",
+     "covers": "size and overlap, structure-aware chunking, metadata, chunking mistakes; RagSearch"
+    },
+    {
+     "id": "vector-db-ann-concepts",
+     "title": "Vector search internals",
+     "covers": "exact vs approximate, HNSW, recall vs latency, filters"
+    },
+    {
+     "id": "vector-db-qdrant-setup",
+     "title": "Qdrant setup",
+     "covers": "Docker, collections, points and payloads, REST and Python client"
+    },
+    {
+     "id": "vector-db-qdrant-search",
+     "title": "Searching with Qdrant",
+     "covers": "filters, payload indexes, scoring, updating and deleting"
+    },
+    {
+     "id": "vector-db-hybrid-reranking",
+     "title": "Hybrid search and reranking",
+     "covers": "BM25 + vectors, fusion, rerankers (concept)"
+    },
+    {
+     "id": "vector-db-ops-pgvector",
+     "title": "Operating a vector store",
+     "covers": "sizing, backups, updates, pgvector as the alternative"
+    }
+   ]
+  }
+ ],
+ "rag": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "rag-architecture",
+     "title": "RAG architecture",
+     "covers": "ingest, retrieve, augment, generate; when RAG beats fine-tuning"
+    },
+    {
+     "id": "rag-ingestion-pipeline",
+     "title": "Ingestion",
+     "covers": "parsing PDFs, OCR, cleaning, metadata, idempotent re-indexing"
+    },
+    {
+     "id": "rag-retrieval-citations",
+     "title": "Retrieval and citations",
+     "covers": "top-k, thresholds, prompt assembly, \"I don't know\", source citations; RagSearch"
+    },
+    {
+     "id": "rag-advanced-retrieval",
+     "title": "Better retrieval",
+     "covers": "query rewriting, multi-query, parent-document, reranking"
+    },
+    {
+     "id": "rag-evaluation",
+     "title": "Evaluating RAG",
+     "covers": "recall@k, MRR, faithfulness, answer relevance, error analysis"
+    },
+    {
+     "id": "rag-security-permissions",
+     "title": "Security",
+     "covers": "document-level permissions, prompt injection through documents, leakage"
+    },
+    {
+     "id": "rag-text-to-sql",
+     "title": "Text-to-SQL agent over gold views",
+     "covers": "`run_readonly_sql`, allowed tables, row limits, refusal"
+    },
+    {
+     "id": "rag-production-lab",
+     "title": "Lab: policy RAG with citations",
+     "covers": "10 synthetic accounting SOPs, Qdrant, FastAPI endpoint"
+    }
+   ]
+  }
+ ],
+ "evals": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "evals-concepts",
+     "title": "Why evals",
+     "covers": "golden sets, offline vs online, regression testing for prompts"
+    },
+    {
+     "id": "evals-metrics",
+     "title": "Metrics",
+     "covers": "exact/field accuracy, semantic scoring, LLM-as-judge and its pitfalls, latency and cost per case"
+    },
+    {
+     "id": "evals-datasets-regression",
+     "title": "Datasets and regression",
+     "covers": "building a 50-case set, versioning, CI gates; EvalRunner"
+    },
+    {
+     "id": "evals-tooling",
+     "title": "Tooling",
+     "covers": "pytest-based evals and what the frameworks add (\"check the current docs\")"
+    },
+    {
+     "id": "evals-human-review-lab",
+     "title": "Lab: eval the invoice extractor",
+     "covers": "per-field accuracy across 50 invoices and a human-review queue"
+    }
+   ]
+  }
+ ],
+ "guardrails": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "guardrails-threat-model",
+     "title": "Threat model",
+     "covers": "OWASP Top 10 for LLM applications (concept), data flows, attack surfaces"
+    },
+    {
+     "id": "guardrails-prompt-injection",
+     "title": "Prompt injection",
+     "covers": "direct and indirect, defences that work and ones that don't"
+    },
+    {
+     "id": "guardrails-pii",
+     "title": "PII and data protection",
+     "covers": "detecting and masking PAN, IFSC, account numbers, emails, phones; logging safely; GuardrailTester"
+    },
+    {
+     "id": "guardrails-sql-tool-safety",
+     "title": "Safe tools",
+     "covers": "read-only access, allow-lists, limits, parameterised queries, confirmation for writes"
+    },
+    {
+     "id": "guardrails-output-validation-hitl",
+     "title": "Output validation and human-in-the-loop",
+     "covers": "schemas, business rules, confidence, review queues"
+    },
+    {
+     "id": "guardrails-governance-lab",
+     "title": "Governance and lab",
+     "covers": "policies, audit trail, responsible-AI checklist; lab: guard the Ask-Your-Finance-Data agent"
+    }
+   ]
+  }
+ ],
+ "langgraph": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "langgraph-agent-concepts",
+     "title": "Agent concepts and patterns",
+     "covers": "workflows vs agents, ReAct, plan-and-execute, when not to use an agent"
+    },
+    {
+     "id": "langgraph-state-nodes-edges",
+     "title": "State, nodes and edges",
+     "covers": "typed state, reducers, building a graph; AgentGraph"
+    },
+    {
+     "id": "langgraph-routing-loops",
+     "title": "Conditional routing and loops",
+     "covers": "branching on state, retries, bounded loops"
+    },
+    {
+     "id": "langgraph-persistence",
+     "title": "Persistence and checkpoints",
+     "covers": "threads, checkpointers, resuming, time travel"
+    },
+    {
+     "id": "langgraph-human-in-the-loop",
+     "title": "Human approval interrupts",
+     "covers": "pausing for approval, resuming, audit"
+    },
+    {
+     "id": "langgraph-multi-agent",
+     "title": "Subgraphs and multi-agent",
+     "covers": "supervisor patterns, handoffs, the cost of complexity"
+    },
+    {
+     "id": "langgraph-tools-testing",
+     "title": "Tools and testing agents",
+     "covers": "tool design, deterministic tests, replaying traces"
+    },
+    {
+     "id": "langgraph-deploy-lab",
+     "title": "Deploy and lab",
+     "covers": "serving a graph behind FastAPI; lab: a validate → diagnose → propose → approve → apply graph for one broken file"
+    }
+   ]
+  }
+ ],
+ "mcp": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "mcp-concepts",
+     "title": "MCP concepts",
+     "covers": "hosts, clients, servers; tools, resources, prompts; transports (stdio, HTTP)"
+    },
+    {
+     "id": "mcp-build-server",
+     "title": "Build a server in Python",
+     "covers": "expose `read_file_schema`, `validate_file`, `apply_mapping`, `run_pipeline`, `notify`"
+    },
+    {
+     "id": "mcp-clients-hosts",
+     "title": "Connect clients",
+     "covers": "VS Code, desktop hosts, your own client"
+    },
+    {
+     "id": "mcp-security-auth",
+     "title": "Security and auth",
+     "covers": "least privilege, OAuth for remote servers, prompt-injection via tool results, permissions"
+    },
+    {
+     "id": "mcp-production-lab",
+     "title": "Lab: production concerns",
+     "covers": "logging, timeouts, versioning, testing the server"
+    }
+   ]
+  }
+ ],
+ "observability": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "observability-logs-metrics-traces",
+     "title": "Logs, metrics, traces",
+     "covers": "OpenTelemetry concepts, correlation IDs, structured logs"
+    },
+    {
+     "id": "observability-llm-tracing",
+     "title": "Tracing LLM and tool calls",
+     "covers": "spans per step, prompt/response capture and redaction, cost per run, tool choices (\"check the current tool docs\")"
+    },
+    {
+     "id": "observability-cost-latency-slos",
+     "title": "Cost, latency and SLOs",
+     "covers": "budgets, alerts, timeouts, fallbacks"
+    },
+    {
+     "id": "observability-data-observability",
+     "title": "Data observability",
+     "covers": "freshness, volume, schema drift, anomaly checks"
+    },
+    {
+     "id": "observability-incidents-runbooks",
+     "title": "Incidents and runbooks",
+     "covers": "on-call basics, triage, post-mortems for AI/data failures"
+    },
+    {
+     "id": "observability-azure-monitor-lab",
+     "title": "Lab: wire it into Azure",
+     "covers": "App Insights traces, alerts, dashboard for the agent"
+    }
+   ]
+  }
+ ],
+ "system-design": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "system-design-framework",
+     "title": "A framework you can say out loud",
+     "covers": "requirements, scale estimates, API and data model, bottlenecks, trade-offs"
+    },
+    {
+     "id": "system-design-batch-pipeline",
+     "title": "Design: nightly finance data pipeline",
+     "covers": "ingestion, validation, warehouse, orchestration, recovery"
+    },
+    {
+     "id": "system-design-streaming",
+     "title": "Design: real-time order analytics",
+     "covers": "Kafka, stream processing, serving, exactly-once reality"
+    },
+    {
+     "id": "system-design-ai-document-pipeline",
+     "title": "Design: AI document pipeline",
+     "covers": "intake, OCR/extraction, validation, review, load"
+    },
+    {
+     "id": "system-design-support-agent",
+     "title": "Design: customer-support agent",
+     "covers": "RAG, tools, escalation, evaluation"
+    },
+    {
+     "id": "system-design-rag-10000-pdfs",
+     "title": "Design: RAG over 10,000 PDFs",
+     "covers": "ingestion at scale, chunking, index, permissions, freshness"
+    },
+    {
+     "id": "system-design-safe-action-agent",
+     "title": "Design: an agent that takes actions safely",
+     "covers": "approvals, limits, audit, rollback"
+    },
+    {
+     "id": "system-design-multi-tenant-platform",
+     "title": "Design: multi-tenant data platform",
+     "covers": "isolation, cost, noisy neighbours, onboarding"
+    },
+    {
+     "id": "system-design-security-cost-reliability",
+     "title": "Cross-cutting: security, cost and reliability checklists",
+     "covers": "the questions to ask every time"
+    }
+   ]
+  }
+ ],
+ "fde-craft": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "fde-craft-role-landscape",
+     "title": "The role",
+     "covers": "FDE vs software engineer vs solutions engineer vs consultant; where FDEs work in India and remote (\"check the current market\")"
+    },
+    {
+     "id": "fde-craft-discovery-scoping",
+     "title": "Discovery and scoping",
+     "covers": "interviewing users, mapping the process, finding the real problem, ROI, saying no"
+    },
+    {
+     "id": "fde-craft-demos-communication",
+     "title": "Demos and communication",
+     "covers": "storytelling, executive updates, written one-pagers, explaining trade-offs to non-engineers"
+    },
+    {
+     "id": "fde-craft-delivery-uat",
+     "title": "Delivery",
+     "covers": "onboarding, UAT, change management, handling pushback, handover and documentation"
+    },
+    {
+     "id": "fde-craft-working-with-it-security",
+     "title": "Working with IT and security",
+     "covers": "access requests, data classification, approvals, living inside customer constraints"
+    },
+    {
+     "id": "fde-craft-portfolio-storytelling",
+     "title": "Telling your story",
+     "covers": "the six STAR stories without client names, turning day-job impact into numbers (2–3 days → 30 minutes)"
+    }
+   ]
+  }
+ ],
+ "interview-prep": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "interview-prep-timed-sql-python",
+     "title": "Timed SQL and Python",
+     "covers": "the 45-minute format, thinking aloud, recovering from a blank"
+    },
+    {
+     "id": "interview-prep-star-stories",
+     "title": "STAR stories",
+     "covers": "the six prompts from the PDF, delivery in two minutes"
+    },
+    {
+     "id": "interview-prep-system-design-practice",
+     "title": "System design practice",
+     "covers": "a practice routine you choose and a self-review rubric"
+    },
+    {
+     "id": "interview-prep-mock-plan",
+     "title": "Mock interviews",
+     "covers": "who to ask, how to run one, how to give and get feedback"
+    },
+    {
+     "id": "interview-prep-resume-linkedin-portfolio",
+     "title": "Resume, LinkedIn and portfolio",
+     "covers": "headline, domain groupings without client names, a Projects section with GitHub links"
+    },
+    {
+     "id": "interview-prep-offers-negotiation",
+     "title": "Offers and negotiation",
+     "covers": "comparing offers, notice periods, negotiating without invented numbers (\"verify against current bands\")"
+    }
+   ]
+  }
+ ],
+ "kubernetes": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "kubernetes-concepts",
+     "title": "Why Kubernetes",
+     "covers": "pods, nodes, control plane, desired state"
+    },
+    {
+     "id": "kubernetes-local-cluster",
+     "title": "A local cluster",
+     "covers": "kind/minikube or Docker Desktop, kubectl"
+    },
+    {
+     "id": "kubernetes-workloads",
+     "title": "Workloads",
+     "covers": "Deployments, Services, Jobs, CronJobs, probes"
+    },
+    {
+     "id": "kubernetes-config-secrets-storage",
+     "title": "Config, secrets and storage",
+     "covers": "ConfigMaps, Secrets, volumes"
+    },
+    {
+     "id": "kubernetes-networking-ingress",
+     "title": "Networking and ingress",
+     "covers": "Services, ingress controllers, load balancing"
+    },
+    {
+     "id": "kubernetes-aks-lab",
+     "title": "Lab: deploy the API to AKS and compare with Container Apps",
+     "covers": ""
+    }
+   ]
+  }
+ ],
+ "terraform": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "terraform-concepts",
+     "title": "IaC and Terraform concepts",
+     "covers": "declarative, providers, plan/apply"
+    },
+    {
+     "id": "terraform-config-state",
+     "title": "Configuration and state",
+     "covers": "resources, variables, outputs, remote state"
+    },
+    {
+     "id": "terraform-modules-variables",
+     "title": "Modules and environments",
+     "covers": "reuse, workspaces vs folders"
+    },
+    {
+     "id": "terraform-azure-lab",
+     "title": "Lab: the landing zone as code",
+     "covers": "resource group, storage, Key Vault"
+    },
+    {
+     "id": "terraform-ci",
+     "title": "Terraform in CI",
+     "covers": "plan on PR, apply on merge, drift"
+    }
+   ]
+  }
+ ],
+ "bicep": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "bicep-concepts",
+     "title": "Bicep concepts",
+     "covers": "ARM, declarative templates, `az deployment`"
+    },
+    {
+     "id": "bicep-resources-params",
+     "title": "Resources and parameters",
+     "covers": "syntax, parameters, outputs"
+    },
+    {
+     "id": "bicep-modules-deploy",
+     "title": "Modules and deployment",
+     "covers": "modules, scopes, what-if"
+    },
+    {
+     "id": "bicep-lab",
+     "title": "Lab: deploy the Azure landing zone and the Container App with Bicep",
+     "covers": ""
+    }
+   ]
+  }
+ ],
+ "fabric": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "fabric-concepts",
+     "title": "What Fabric is",
+     "covers": "workloads, OneLake, capacities"
+    },
+    {
+     "id": "fabric-lakehouse-onelake",
+     "title": "Lakehouse and OneLake",
+     "covers": "Delta tables, shortcuts"
+    },
+    {
+     "id": "fabric-pipelines-dataflows",
+     "title": "Pipelines and Dataflows Gen2",
+     "covers": ""
+    },
+    {
+     "id": "fabric-warehouse",
+     "title": "Fabric Warehouse and SQL endpoints",
+     "covers": ""
+    },
+    {
+     "id": "fabric-direct-lake-power-bi",
+     "title": "Direct Lake and Power BI",
+     "covers": ""
+    },
+    {
+     "id": "fabric-governance-capacity",
+     "title": "Governance, security and capacity",
+     "covers": "cost control"
+    },
+    {
+     "id": "fabric-lab",
+     "title": "Lab: Kollana medallion in Fabric",
+     "covers": ""
+    }
+   ]
+  }
+ ],
+ "duckdb": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "duckdb-concepts",
+     "title": "Why an in-process analytical database",
+     "covers": ""
+    },
+    {
+     "id": "duckdb-sql-parquet",
+     "title": "SQL over Parquet and CSV",
+     "covers": ""
+    },
+    {
+     "id": "duckdb-python-integration",
+     "title": "DuckDB with Python and pandas",
+     "covers": ""
+    },
+    {
+     "id": "duckdb-vs-others",
+     "title": "DuckDB vs pandas vs Spark vs warehouses",
+     "covers": "choosing"
+    },
+    {
+     "id": "duckdb-lab",
+     "title": "Lab: analytics on laptop-sized data",
+     "covers": ""
+    }
+   ]
+  }
+ ],
+ "redis": [
+  {
+   "module": null,
+   "lessons": [
+    {
+     "id": "redis-concepts",
+     "title": "What Redis is and is not",
+     "covers": ""
+    },
+    {
+     "id": "redis-data-structures",
+     "title": "Strings, hashes, lists, sets, sorted sets, TTLs",
+     "covers": ""
+    },
+    {
+     "id": "redis-caching-queues",
+     "title": "Caching patterns, rate limiting and simple queues",
+     "covers": ""
+    },
+    {
+     "id": "redis-lab",
+     "title": "Lab: cache the API's slowest endpoint and add a rate limit",
+     "covers": ""
+    }
+   ]
+  }
+ ]
+}

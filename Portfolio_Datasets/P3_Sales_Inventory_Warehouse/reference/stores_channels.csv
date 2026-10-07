@@ -1,0 +1,9 @@
+store_code,store_name,channel,region
+ST01,Hyderabad - Banjara Hills,Retail,South
+ST02,Bengaluru - Indiranagar,Retail,South
+ST03,Mumbai - Andheri,Retail,West
+ST04,Pune - Kothrud,Retail,West
+ST05,Delhi - Saket,Retail,North
+ST06,Chennai - T Nagar,Retail,South
+WEB,Online Store,E-commerce,All India
+B2B,Wholesale Desk,B2B,All India
