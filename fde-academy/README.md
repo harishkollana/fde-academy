@@ -13,8 +13,11 @@ npm run dev          # http://localhost:5173
 docker compose up --build   # http://localhost:8080
 ```
 
+## Three domains, one site
+The app has three tabs, each with its own content, progress and agent files: **FDE** (this course), **MBA + ACCA** (`src/content/mba/`) and **Corporate Mitra** (`src/content/corporate-mitra/`). `CLAUDE.md` and `RESUME.md` in this folder are site-wide; every domain has its own `CLAUDE.md` and `RESUME.md` (the FDE pair is in `src/content/phases/`).
+
 ## Continue building
-See `CLAUDE.md`, `docs/TASKS.md` and `docs/PROMPT.md`. Check content with `npm run validate`, the plan with `npm run status`.
+Start with `CLAUDE.md` (site-wide), then the `CLAUDE.md` and `RESUME.md` of the domain you are working on. For FDE also see `docs/TASKS.md` and `docs/PROMPT.md`: check content with `npm run validate`, the plan with `npm run status`.
 
 ## How it works
 - **SQL playgrounds**: PostgreSQL 18 compiled to WebAssembly (PGlite), seeded with a synthetic finance dataset (GL, budget, FX, GST, payroll, sales). Each playground gets its own copy, so you can't break anything.

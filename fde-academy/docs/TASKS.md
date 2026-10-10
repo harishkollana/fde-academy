@@ -3,7 +3,7 @@
 Legend: ✅ done · 🟡 partly done · ⬜ not started.
 **Work on ONE task per session.** The curriculum (every lesson id, title and what it covers) is in `docs/roadmap-v2/`; the lesson lists there are the contract. Live counts: `npm run status` (planned vs written per phase, plus plan errors) and `npm run status -- --missing <phase-id>` (the lessons still to write in one phase). After editing the roadmap docs run `npm run plan`.
 
-**Every content task:** read `CLAUDE.md`, `docs/CONTENT_SPEC.md` (esp. §11 V2 depth rules), `docs/roadmap-v2/00-index.md`, the stage file for your phase, `docs/example-lesson.js`, and two finished lessons (e.g. `src/content/phases/sql/sql-select.js`, `src/content/phases/python/python-collections.js`). Write only the ⬜ lessons, one file each in `src/content/phases/<phase-id>/<lesson-id>.js`, wire them into `src/content/phases/<phase-id>.js`, run `npm run validate -- src/content/phases/<phase-id>.js` until 0 errors, run `npm run status`, then update this file.
+**Every content task:** read `src/content/phases/CLAUDE.md`, `docs/CONTENT_SPEC.md` (esp. §11 V2 depth rules), `docs/roadmap-v2/00-index.md`, the stage file for your phase, `docs/example-lesson.js`, and two finished lessons (e.g. `src/content/phases/sql/sql-select.js`, `src/content/phases/python/python-collections.js`). Write only the ⬜ lessons, one file each in `src/content/phases/<phase-id>/<lesson-id>.js`, wire them into `src/content/phases/<phase-id>.js`, run `npm run validate -- src/content/phases/<phase-id>.js` until 0 errors, run `npm run status`, then update this file.
 
 ---
 ## Done

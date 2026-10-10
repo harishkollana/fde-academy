@@ -56,10 +56,10 @@ A warm paper notebook with ink drawings. Calm, readable, a little playful; never
 | `/sandbox` | Free **SQL playground** (`SqlPlayground` id `sandbox-sql`, starter `SELECT * FROM fact_gl LIMIT 20;`) + free **Python playground** + a data catalogue (table list with one-line descriptions and the deliberate quirks — copy from docs/CONTENT_SPEC.md §6). |
 | `/interview` | **Interview prep**: STAR story builder (for each `interview.star` prompt: fields Situation/Task/Action/Result + metric, saved in `state.stories[id]`, word count, "read aloud" timer 2 min), system design prompts (render `blocks`), Q&A bank with topic filter and reveal-answer cards. |
 | `/glossary` | Search box, A–Z list grouped, phase filter, flashcard mode (flip card, next/prev, shuffle). |
-| `/settings` | Export progress JSON (download), import JSON (file input), reset (confirm), about (how this app works, Docker note). |
+| `/settings` | Site-level page (own tab in the site tab bar, no sidebar), not part of FDE any more: backup (combined JSON of FDE + MBA + ACCA + Corporate Mitra), start over, and three in-page tabs with counts by phase and lesson. See the root `CLAUDE.md`, section "Settings". |
 
 ## Layout
-Left sidebar (logo "FDE Academy" in Kalam with a small rough.js underline; nav: Dashboard, Practice, Sandbox, Interview, Glossary, Settings; then the phases grouped under their stage headings, each expandable to modules → lessons with ✓ marks and a small progress ring; current lesson highlighted). Top bar: ⌘K / Ctrl+K quick search (lessons by title + glossary terms), XP pill with level, 🔥 streak. Footer-free.
+Left sidebar (logo "FDE Academy" in Kalam with a small rough.js underline; nav: Dashboard, Practice, Sandbox, Interview, Glossary (Settings moved to the site tab bar on 10 Oct 2026); then the phases grouped under their stage headings, each expandable to modules → lessons with ✓ marks and a small progress ring; current lesson highlighted). Top bar: ⌘K / Ctrl+K quick search (lessons by title + glossary terms), XP pill with level, 🔥 streak. Footer-free.
 
 ## CSS classes already used by existing components — style ALL of these in `src/styles.css`
 Generic: `btn primary btn-mini chip chips on card col cols row wrap top spacer muted small mono hand big lbl toggle mono-in error hint solution console bad ok warn verdict pill status null num plain`.

@@ -73,7 +73,7 @@ export function fmtDate(s, opts = { day: 'numeric', month: 'short', year: 'numer
 }
 
 export function useDocTitle(title) {
-  useEffect(() => { document.title = title ? `${title} · FDE Academy` : 'FDE Academy'; }, [title]);
+  useEffect(() => { document.title = title ? `${title} · My Academy` : 'My Academy'; }, [title]);
 }
 
 export function Ring({ pct = 0, color = '#1f2a44', size = 22, stroke = 3, label }) {

@@ -1,10 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import rough from 'roughjs';
 import { PHASES, STAGE_GROUPS, ALL_LESSONS, lessonById, plannedLessonCount } from '../content/index.js';
 import GLOSSARY from '../content/glossary.js';
 import { useProgress, streak, level } from '../lib/store';
 import { Ring, phaseProgress } from '../pages/shared';
+import McaShell from './McaShell';
+import CmShell from './CmShell';
+import StudyTopBar, { QuickSearch, useShellChrome } from './StudyTopBar';
 
 const gen = rough.generator();
 const roughEls = (drawable, key) => gen.toPaths(drawable).map((p, i) => (
@@ -17,14 +20,13 @@ const NAV = [
   ['/sandbox', '🧪', 'Sandbox'],
   ['/interview', '🎤', 'Interview'],
   ['/glossary', '📖', 'Glossary'],
-  ['/settings', '⚙️', 'Settings'],
 ];
 
 function Logo() {
   const underline = useMemo(() => roughEls(gen.curve([[4, 8], [60, 4], [120, 9], [176, 5]], { stroke: '#e8590c', strokeWidth: 2.4, roughness: 1.2, seed: 11 }), 'u'), []);
   return (
-    <Link to="/" className="logo" aria-label="FDE Academy home">
-      <span className="logo-t">FDE Academy</span>
+    <Link to="/" className="logo" aria-label="FDE home">
+      <span className="logo-t">FDE</span>
       <svg className="logo-u" viewBox="0 0 180 14" aria-hidden>{underline}</svg>
       <span className="logo-sub">The road to Forward Deployed Engineer, at your own pace</span>
     </Link>
@@ -116,112 +118,37 @@ function Sidebar({ pathname }) {
 }
 
 // ---------- Quick search (Ctrl/⌘ + K) ----------
-const PAGES = NAV.map(([to, ico, label]) => ({ kind: 'page', to, title: label, sub: 'Page', ico }));
+const PAGES = [...NAV, ['/settings', '⚙️', 'Settings']].map(([to, ico, label]) => ({ kind: 'page', to, title: label, sub: 'Page', ico }));
 
-function useSearch(q) {
-  return useMemo(() => {
-    const s = q.trim().toLowerCase();
-    if (!s) return [];
-    const words = s.split(/\s+/);
-    const hit = (text) => words.every((w) => text.includes(w));
-    const out = [];
-    PAGES.forEach((p) => { if (hit(p.title.toLowerCase())) out.push({ ...p, score: 3 }); });
-    PHASES.forEach((p) => {
-      if (hit(`phase ${p.num} ${p.title} ${p.short}`.toLowerCase())) out.push({ kind: 'phase', to: `/phase/${p.id}`, title: `Phase ${p.num}: ${p.title}`, sub: p.stageTitle, ico: p.emoji, score: 2 });
-    });
-    ALL_LESSONS.forEach((l) => {
-      const t = l.title.toLowerCase();
-      const hay = `${t} ${l.moduleTitle} ${(l.roadmap || []).join(' ')}`.toLowerCase();
-      if (hit(hay)) out.push({ kind: 'lesson', to: `/lesson/${l.id}`, title: l.title, sub: `${l.phase.emoji} ${l.moduleTitle}`, ico: '📄', score: hit(t) ? 2.5 : 1 });
-    });
-    (Array.isArray(GLOSSARY) ? GLOSSARY : []).forEach((g) => {
-      if (hit(`${g.term} ${g.simple || ''}`.toLowerCase())) out.push({ kind: 'term', to: `/glossary?q=${encodeURIComponent(g.term)}`, title: g.term, sub: g.simple, ico: '📖', score: g.term.toLowerCase().includes(s) ? 2.2 : 0.8 });
-    });
-    return out.sort((a, b) => b.score - a.score).slice(0, 14);
-  }, [q]);
+function fdeSearch(q) {
+  const s = q.trim().toLowerCase();
+  if (!s) return [];
+  const words = s.split(/\s+/);
+  const hit = (text) => words.every((w) => text.includes(w));
+  const out = [];
+  PAGES.forEach((p) => { if (hit(p.title.toLowerCase())) out.push({ ...p, score: 3 }); });
+  PHASES.forEach((p) => {
+    if (hit(`phase ${p.num} ${p.title} ${p.short}`.toLowerCase())) out.push({ kind: 'phase', to: `/phase/${p.id}`, title: `Phase ${p.num}: ${p.title}`, sub: p.stageTitle, ico: p.emoji, score: 2 });
+  });
+  ALL_LESSONS.forEach((l) => {
+    const t = l.title.toLowerCase();
+    const hay = `${t} ${l.moduleTitle} ${(l.roadmap || []).join(' ')}`.toLowerCase();
+    if (hit(hay)) out.push({ kind: 'lesson', to: `/lesson/${l.id}`, title: l.title, sub: `${l.phase.emoji} ${l.moduleTitle}`, ico: '📄', score: hit(t) ? 2.5 : 1 });
+  });
+  (Array.isArray(GLOSSARY) ? GLOSSARY : []).forEach((g) => {
+    if (hit(`${g.term} ${g.simple || ''}`.toLowerCase())) out.push({ kind: 'term', to: `/glossary?q=${encodeURIComponent(g.term)}`, title: g.term, sub: g.simple, ico: '📖', score: g.term.toLowerCase().includes(s) ? 2.2 : 0.8 });
+  });
+  return out.sort((a, b) => b.score - a.score).slice(0, 14);
 }
 
-function QuickSearch({ onClose }) {
-  const [q, setQ] = useState('');
-  const [sel, setSel] = useState(0);
-  const results = useSearch(q);
-  const nav = useNavigate();
-  const inputRef = useRef(null);
-  const listRef = useRef(null);
-  useEffect(() => { inputRef.current?.focus(); }, []);
-  useEffect(() => { setSel(0); }, [q]);
-  useEffect(() => { listRef.current?.querySelector('.qs-item.sel')?.scrollIntoView({ block: 'nearest' }); }, [sel]);
-  const go = (r) => { if (!r) return; nav(r.to); onClose(); };
-  const onKey = (e) => {
-    if (e.key === 'ArrowDown') { e.preventDefault(); setSel((s) => Math.min(results.length - 1, s + 1)); }
-    else if (e.key === 'ArrowUp') { e.preventDefault(); setSel((s) => Math.max(0, s - 1)); }
-    else if (e.key === 'Enter') { e.preventDefault(); go(results[sel]); }
-    else if (e.key === 'Escape') { e.preventDefault(); onClose(); }
-  };
-  return (
-    <div className="qs-overlay" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="qs" role="dialog" aria-modal="true" aria-label="Search lessons and glossary">
-        <div className="qs-bar">
-          <span aria-hidden>🔎</span>
-          <input ref={inputRef} value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={onKey} placeholder="Search lessons, phases, glossary terms…"
-            role="combobox" aria-expanded={results.length > 0} aria-controls="qs-list" aria-activedescendant={results[sel] ? `qs-${sel}` : undefined} />
-          <kbd>Esc</kbd>
-        </div>
-        <ul className="qs-list" id="qs-list" role="listbox" ref={listRef}>
-          {!q.trim() && <li className="qs-hint">Type to search. Try “left join”, “GSTIN”, “docker” or “phase 4”.</li>}
-          {q.trim() && results.length === 0 && <li className="qs-hint">Nothing matches “{q}”. Lessons may still be on their way.</li>}
-          {results.map((r, i) => (
-            <li key={r.kind + r.to} id={`qs-${i}`} role="option" aria-selected={i === sel} className={`qs-item ${i === sel ? 'sel' : ''}`} onMouseEnter={() => setSel(i)} onClick={() => go(r)}>
-              <span className="qs-ico" aria-hidden>{r.ico}</span>
-              <span className="qs-txt"><span className="qs-title">{r.title}</span>{r.sub && <span className="qs-sub">{r.sub}</span>}</span>
-              <span className="qs-kind">{r.kind}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
-function TopBar({ onMenu, onSearch }) {
+function FdeTopBar({ onMenu, onSearch }) {
   const { state } = useProgress();
-  const lv = level(state.xp);
-  const st = streak(state.activity);
-  const isMac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
-  return (
-    <header className="topbar">
-      <button className="menu-btn" onClick={onMenu} aria-label="Open menu">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden><path d="M3 6.5h18M3 12h18M3 17.5h18" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>
-      </button>
-      <Link to="/" className="top-logo">FDE Academy</Link>
-      <button className="search-btn" onClick={onSearch}>
-        <span aria-hidden>🔎</span><span className="search-ph">Search lessons and terms</span><kbd>{isMac ? '⌘' : 'Ctrl'} K</kbd>
-      </button>
-      <span className="spacer" />
-      <Link to="/" className="xp-pill" title={lv.next ? `${lv.next - state.xp} XP to ${lv.nextName}` : 'Top level reached'}>
-        <span className="xp-n">{state.xp}</span><span className="xp-u">XP</span><span className="xp-lv">{lv.name}</span>
-      </Link>
-      <span className={`streak-pill ${st ? 'on' : ''}`} title={st ? `${st}-day streak` : 'Earn XP today to start a streak'}>🔥 {st}</span>
-    </header>
-  );
+  return <StudyTopBar onMenu={onMenu} onSearch={onSearch} logo={{ to: '/', text: 'FDE' }} homeTo="/" status={{ xp: state.xp, lv: level(state.xp), streak: streak(state.activity) }} />;
 }
 
-export default function Layout({ children }) {
+function FdeShell({ children }) {
   const { pathname } = useLocation();
-  const [drawer, setDrawer] = useState(false);
-  const [search, setSearch] = useState(false);
-  useEffect(() => { setDrawer(false); }, [pathname]);
-  useEffect(() => {
-    const onKey = (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); setSearch((s) => !s); }
-      if (e.key === 'Escape') setDrawer(false);
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
-  useEffect(() => {
-    document.body.classList.toggle('no-scroll', drawer || search);
-  }, [drawer, search]);
+  const { drawer, setDrawer, search, setSearch } = useShellChrome(pathname);
 
   return (
     <div className="shell">
@@ -232,10 +159,57 @@ export default function Layout({ children }) {
       </aside>
       {drawer && <div className="scrim" onClick={() => setDrawer(false)} aria-hidden />}
       <div className="main-col">
-        <TopBar onMenu={() => setDrawer(true)} onSearch={() => setSearch(true)} />
+        <FdeTopBar onMenu={() => setDrawer(true)} onSearch={() => setSearch(true)} />
         <main id="main" className="main" tabIndex={-1}>{children}</main>
       </div>
-      {search && <QuickSearch onClose={() => setSearch(false)} />}
+      {search && (
+        <QuickSearch onClose={() => setSearch(false)} search={fdeSearch} label="Search lessons and glossary" placeholder="Search lessons, phases, glossary terms…"
+          hint="Type to search. Try “left join”, “GSTIN”, “docker” or “phase 4”." emptyNote=" Lessons may still be on their way." />
+      )}
     </div>
+  );
+}
+
+// ---------- Site tabs (top of every page) ----------
+export const SITE_TABS = [
+  { id: 'fde', label: 'FDE', to: '/' },
+  { id: 'mba-acca', label: 'MBA + ACCA', to: '/mba-acca' },
+  { id: 'corporate-mitra', label: 'Corporate Mitra', to: '/corporate-mitra' },
+  { id: 'settings', label: '⚙️ Settings', to: '/settings' },
+];
+
+export const sectionOf = (pathname) => SITE_TABS.find((t) => t.id !== 'fde' && (pathname === t.to || pathname.startsWith(`${t.to}/`)))?.id || 'fde';
+
+function SiteTabs({ current }) {
+  return (
+    <nav className="site-tabs" aria-label="Sections">
+      {SITE_TABS.map((t) => (
+        <Link key={t.id} to={t.to} className={`site-tab ${current === t.id ? 'active' : ''}`} aria-current={current === t.id ? 'page' : undefined}>{t.label}</Link>
+      ))}
+    </nav>
+  );
+}
+
+// Site-wide pages (Settings) have no sidebar: they belong to no single domain.
+function SoloShell({ children }) {
+  return (
+    <div className="solo-shell">
+      <a href="#main" className="skip" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>Skip to content</a>
+      <main id="main" className="main solo" tabIndex={-1}>{children}</main>
+    </div>
+  );
+}
+
+export default function Layout({ children }) {
+  const { pathname } = useLocation();
+  const current = sectionOf(pathname);
+  return (
+    <>
+      <SiteTabs current={current} />
+      {current === 'settings' && <SoloShell>{children}</SoloShell>}
+      {current === 'fde' && <FdeShell>{children}</FdeShell>}
+      {current === 'corporate-mitra' && <CmShell>{children}</CmShell>}
+      {current === 'mba-acca' && <McaShell>{children}</McaShell>}
+    </>
   );
 }
